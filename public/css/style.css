@@ -53,6 +53,21 @@ input {
     letter-spacing: 0.2px;
     color: rgba(0, 0, 0, 0.6);
     background: none;
+    transform: translateX(-1em);
+}
+
+.input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    color: #D8A9B4;
+    font-size: 1.5em;
+    width: 1em;
+    padding: 4vh 0 1vh 1em;
+    /*transform: translateX(1.2em);*/
 }
 
 ::placeholder {
@@ -144,7 +159,7 @@ p {
 @media only screen and (max-device-width: 1030px) {
 
     .login-container, .logo {
-        width: 80%;
+        width: 70%;
     }
 
     img {
