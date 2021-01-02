@@ -89,7 +89,7 @@ img {
 .menubar ul li a .menu-icon {
     position: relative;
     display: block;
-    min-width: 3vw;
-    height: 3vw;
+    min-width: 60px;
+    height: 60px;
     text-align: center;
 }
