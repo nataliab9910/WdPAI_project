@@ -105,3 +105,72 @@ body {
     background: #D8A9B4;
     border-radius: 20px;
 }
+
+.search-container {
+    width: 30%;
+    height: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form.search-bar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+
+    background: #F8F7F7 0 0 no-repeat padding-box;
+    border: 1px solid #D8A9B4;
+    border-radius: 33px;
+    box-shadow: 2px 2px 2px #BDB7B7;
+}
+
+input {
+    border: none;
+    width: 70%;
+    text-align: left;
+    font: normal normal bold 1em Trebuchet MS;
+    letter-spacing: 0.2px;
+    color: #2E4C7C;
+    background: none;
+}
+
+input::placeholder {
+    color: #BDB7B799;
+}
+
+.icon {
+    color: #BDB7B799;
+    font-size: 1.5em;
+}
+
+form.search-bar button {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+}
+
+form.search-bar button:active {
+    outline: none;
+    border: none;
+    transform: translateY(1px);
+}
+
+.tasks {
+    width: 80%;
+}
+
+.task {
+    width: 50%;
+
+    background: #F8F7F7 0 0 no-repeat padding-box;
+    border: 1px solid #D8A9B4;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #BDB7B7;
+}

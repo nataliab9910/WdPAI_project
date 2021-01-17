@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    background: #EBEAEA 0 0 no-repeat padding-box;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    font: normal normal bold 20px/23px Trebuchet MS;
+}
+
+.bottom-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    background: transparent linear-gradient(180deg, #2E4C7C4D 0%, #2E4C7CEB 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 3px 3px 6px #2E4C7C3B;
+    opacity: 1;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.co-workers {
+    display: flex;
+    flex-direction: row;
+}
