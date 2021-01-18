@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: transparent linear-gradient(180deg, #FCFCFC 0%, #2E4C7C 100%) 0 0 no-repeat padding-box;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.logo {
+    /*margin-top: 20vh;*/
+    /*margin-bottom: 8vh;*/
+    display: flex;
+    justify-content: center;
+}
+
+.login-container {
+    width: 45%;
+    /*height: 100%;*/
+    /*margin-bottom: 15vh;*/
+}
+
+form.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 1%;
+    width: 70%;
+    height: 100%;
+    margin: auto;
+
+    background: #FFFFFFF5 0 0 no-repeat padding-box;
+    box-shadow: 3px 6px 6px #2E4C7C;
+    border: 2px solid #D8A9B4;
+    border-radius: 33px;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid #BDB7B7;
+    padding: 4vh 2vw 1vh 2vw;
+    width: 70%;
+    text-align: center;
+    font: normal normal bold 1.5em Trebuchet MS;
+    letter-spacing: 0.2px;
+    color: #2E4C7C;
+    background: none;
+    transform: translateX(-1em);
+}
+
+.input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    color: #D8A9B4;
+    font-size: 1.5em;
+    width: 1em;
+    padding: 4vh 0 1vh 1em;
+    /*transform: translateX(1.2em);*/
+}
+
+::placeholder {
+    color: #BDB7B799;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.login-button button:active, button:focus {
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 1px #BDB7B7;
+    transform: translateY(1px);
+}
+
+.sign-up-button button:active, button:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    transform: translateY(1px);
+}
+
+.login-button button {
+    margin: 3vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background: transparent linear-gradient(180deg, #ECE3E3 0%, #D8A9B4 100%) 0 0 no-repeat padding-box;
+    box-shadow: 2px 2px 2px #BDB7B7;
+    border-radius: 25px;
+    text-align: center;
+    font: normal normal normal 2em Trebuchet MS;
+    letter-spacing: 0.3px;
+    color: #2E4C7C;
+    padding: 0 20%;
+}
+
+.sign-up-button {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+.sign-up-button button {
+    width: 100%;
+    margin: 1vh 1%;
+    /*margin-top: 0;*/
+    border: none;
+    background: transparent no-repeat padding-box;
+    text-align: center;
+    font: normal normal normal 1.7em Trebuchet MS;
+    letter-spacing: 0.25px;
+    color: #2E4C7C;
+    padding: 0 20%;
+}
+
+p {
+    margin: 0;
+}
+
+.or {
+    padding: 0;
+    text-align: center;
+    font: normal normal bold 1.5em Trebuchet MS;
+    letter-spacing: 0.2px;
+    color: #BDB7B799;
+    opacity: 1;
+}
+
+.motto {
+    text-align: center;
+    font: normal normal normal 4em Vladimir Script;
+    letter-spacing: 0;
+    color: #D8A9B4;
+    /*margin-top: 3vh;*/
+    /*margin-bottom: 1vh;*/
+}
+
+@media only screen and (max-device-width: 1030px) {
+
+    .login-container, .logo {
+        width: 70%;
+    }
+
+    img {
+        height: 7vh;
+    }
+
+    * {
+        font-size: 25px;
+    }
+
+    .container {
+        justify-content: space-evenly;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-device-width: 420px) {
+
+    .login-container {
+        width: 100%;
+    }
+
+    form {
+        margin: auto;
+    }
+}
