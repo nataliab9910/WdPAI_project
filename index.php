@@ -15,4 +15,4 @@ Routing::get('welcome', 'DefaultController');
 
 Routing::run($path);
 
-echo 'Hello there! 👋';
+//echo 'Hello there! 👋';
