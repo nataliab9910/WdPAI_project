@@ -18,7 +18,7 @@
         <div class="options-list">
             <ul>
                 <li>
-                    <a href="welcome" class="active">
+                    <a href="welcome">
                         <span class="menu-icon"><i class="fas fa-play"></i></span>
                         <span class="title">START</span>
                     </a>
@@ -74,11 +74,11 @@
         </div>
     </div>
     <div class="navbar">
-        <a href="#menu" onclick="toggleMenu()"><i class="fas fa-bars"></i>
+        <a onclick="toggleMenu()"><i class="fas fa-bars"></i>
         </a> <!TODO: change href?>
         <a href="welcome"><img src="public/img/logo.svg">
         </a>
-        <a href="#account"><i class="fas fa-user"></i>
+        <a href="user_account" class="active"><i class="fas fa-user"></i>
         </a>
     </div>
     <script type="text/javascript">

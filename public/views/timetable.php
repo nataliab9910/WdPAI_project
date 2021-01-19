@@ -127,11 +127,11 @@
         </div>
     </div>
     <div class="navbar">
-        <a href="#menu" onclick="toggleMenu()"><i class="fas fa-bars"></i>
+        <a onclick="toggleMenu()"><i class="fas fa-bars"></i>
         </a> <!TODO: change href?>
         <a href="welcome"><img src="public/img/logo.svg">
         </a>
-        <a href="#account"><i class="fas fa-user"></i>
+        <a href="user_account"><i class="fas fa-user"></i>
         </a>
     </div>
     <script type="text/javascript">
