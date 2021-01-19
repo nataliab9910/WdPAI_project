@@ -2,83 +2,66 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/menubars.css">
-    <link rel="stylesheet" type="text/css" href="public/css/to-do.css">
+    <link rel="stylesheet" type="text/css" href="public/css/welcome.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
-    <title>TO-DO LISTS</title>
+    <title>WELCOME</title>
 </head>
 <body>
 <div class="container">
-    <div class="task-list">
+    <div class="calendar">
         <div class="header">
-            FUTURE TASKS
-        </div>
-        <div class="task" draggable="true">
-            LEARN PHP
-        </div>
-        <button class="add-task"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="task-list">
-        <div class="header">
-            ACTUAL TASKS
-        </div>
-        <div class="task" draggable="true">
-            LEARN PHP
-        </div>
-        <button class="add-task"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="task-list">
-        <div class="header">
-            DOING TASKS
-        </div>
-        <div class="task" draggable="true">
-            LEARN PHP
-        </div>
-        <button class="add-task"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="task-list">
-        <div class="header">
-            DONE TASKS
-        </div>
-        <div class="task" draggable="true">
-            LEARN PHP
-        </div>
-        <button class="add-task"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="bottom-bar">
-        <div class="select-list">
-            <select>
-                <option>a</option>
-                <option>b</option>
-                <option>c</option>
-                <option>d</option>
-                <option>e</option>
-                <option>Add new list...</option>
-            </select>
-        </div>
-        <div class="co-workers">
-            <div class="person">
-                <div class="photo"> tu będzie foto</div>
-                Anna Kowlska
+            <i class="fas fa-chevron-left" onclick="showPrev()"></i>
+            <div class="month">
+                <h1>feb</h1>
+                <p>2021</p>
             </div>
-            <div class="person">
-                <div class="photo"> tu będzie foto</div>
-                Anna Kowlska
-            </div>
-            <div class="person">
-                <div class="photo"> tu będzie foto</div>
-                Anna Kowlska
-            </div>
-            <button class="add-co-worker"><i class="fas fa-plus-circle"></i></button>
+            <i class="fas fa-chevron-right" onclick="showNext()"></i>
+        </div>
+        <div class="weekdays">
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
+            <div>S</div>
+        </div>
+        <div class="days">
         </div>
     </div>
+    <div class="search-container">
+        <form class="search-bar">
+            <button><i class="fas fa-search icon"></i></button>
+            <input name="search" type="text" placeholder="Google search...">
+        </form>
+    </div>
+    <div class="welcome-text">
+        <div class="header-text">
+            Hi!
+            How are you today?
+        </div>
+    </div>
+    <div class="tasks">
+        <div class="header-text">
+            Your tasks for today:
+        </div>
+        <div class="task">
+            <input type="checkbox" id="coding" name="interest" value="coding">
+            <label for="coding">do dishes</label>
+        </div>
+        <button>
+            <i class="fas fa-plus-circle"></i>
+        </button>
 
+    </div>
 </div>
+<script type="text/javascript" src="public/scripts/calendar.js"></script>
 <div class="bars">
     <div class="menubar">
         <div class="options-list">
             <ul>
                 <li>
-                    <a href="welcome">
+                    <a href="welcome" class="active">
                         <span class="menu-icon"><i class="fas fa-play"></i></span>
                         <span class="title">START</span>
                     </a>
@@ -96,7 +79,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="to_do" class="active">
+                    <a href="to_do">
                         <span class="menu-icon"><i class="fas fa-tasks"></i></span>
                         <span class="title">TO-DO LISTS</span>
                     </a>
@@ -136,7 +119,7 @@
     <div class="navbar">
         <a href="#menu" onclick="toggleMenu()"><i class="fas fa-bars"></i>
         </a> <!TODO: change href?>
-        <a href="welcome.html"><img src="public/img/logo.svg">
+        <a href="welcome"><img src="public/img/logo.svg">
         </a>
         <a href="#account"><i class="fas fa-user"></i>
         </a>

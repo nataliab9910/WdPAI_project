@@ -76,7 +76,7 @@
     <div class="navbar">
         <a href="#menu" onclick="toggleMenu()"><i class="fas fa-bars"></i>
         </a> <!TODO: change href?>
-        <a href="welcome.html"><img src="public/img/logo.svg">
+        <a href="welcome"><img src="public/img/logo.svg">
         </a>
         <a href="#account"><i class="fas fa-user"></i>
         </a>

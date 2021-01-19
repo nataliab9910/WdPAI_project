@@ -2,72 +2,82 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/menubars.css">
-    <link rel="stylesheet" type="text/css" href="public/css/welcome.css">
+    <link rel="stylesheet" type="text/css" href="public/css/timetable.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
-    <title>WELCOME</title>
+    <title>TIMETABLE</title>
 </head>
 <body>
 <div class="container">
-    <div class="calendar">
-        <div class="header">
-            <i class="fas fa-chevron-left" onclick="showPrev()"></i>
-            <div class="month">
-                <h1>feb</h1>
-                <p>2021</p>
-            </div>
-            <i class="fas fa-chevron-right" onclick="showNext()"></i>
+    <div class="day-table">
+        <div class="day-name">Monday</div>
+        <div class="lesson">
+            English
+            12-15
         </div>
-        <div class="weekdays">
-            <div>M</div>
-            <div>T</div>
-            <div>W</div>
-            <div>T</div>
-            <div>F</div>
-            <div>S</div>
-            <div>S</div>
-        </div>
-        <div class="days">
-        </div>
+        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
     </div>
-    <div class="search-container">
-        <form class="search-bar">
-            <button><i class="fas fa-search icon"></i></button>
-            <input name="search" type="text" placeholder="Google search...">
-        </form>
+    <div class="day-table">
+        <div class="day-name">Tuesday</div>
+        <div class="lesson">
+            English
+            12-15
+        </div>
+        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
     </div>
-    <div class="welcome-text">
-        <div class="header-text">
-            Hi!
-            How are you today?
+    <div class="day-table">
+        <div class="day-name">Wednesday</div>
+        <div class="lesson">
+            English
+            12-15
         </div>
+        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
     </div>
-    <div class="tasks">
-        <div class="header-text">
-            Your tasks for today:
+    <div class="day-table">
+        <div class="day-name">Thursday</div>
+        <div class="lesson">
+            English
+            12-15
         </div>
-        <div class="task">
-            <input type="checkbox" id="coding" name="interest" value="coding">
-            <label for="coding">do dishes</label>
+        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
+    </div>
+    <div class="day-table">
+        <div class="day-name">Friday</div>
+        <div class="lesson">
+            English
+            12-15
         </div>
-        <button>
-            <i class="fas fa-plus-circle"></i>
-        </button>
+        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
+    </div>
+    <div class="day-table">
+        <div class="day-name">Saturday</div>
+        <div class="lesson">
+            English
+            12-15
+        </div>
+        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
+    </div>
+    <div class="day-table">
+        <div class="day-name">Sunday</div>
+        <div class="lesson">
+            English
+            12-15
+        </div>
+        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
+    </div>
 
-    </div>
 </div>
-<script type="text/javascript" src="public/scripts/calendar.js"></script>
 <div class="bars">
     <div class="menubar">
         <div class="options-list">
             <ul>
                 <li>
-                    <a href="welcome" class="active">
+                    <a href="welcome">
                         <span class="menu-icon"><i class="fas fa-play"></i></span>
                         <span class="title">START</span>
                     </a>
                 </li>
                 <li>
-                    <a href="timetable">
+                    <a href="timetable" class="active">
                         <span class="menu-icon"><i class="fas fa-calendar-day"></i></span>
                         <span class="title">TIMETABLE</span>
                     </a>
@@ -119,7 +129,7 @@
     <div class="navbar">
         <a href="#menu" onclick="toggleMenu()"><i class="fas fa-bars"></i>
         </a> <!TODO: change href?>
-        <a href="welcome.html"><img src="public/img/logo.svg">
+        <a href="welcome"><img src="public/img/logo.svg">
         </a>
         <a href="#account"><i class="fas fa-user"></i>
         </a>

@@ -11,6 +11,14 @@
         </div>
         <div class="login-container">
             <form class="login">
+                <div class="message">
+                    <?php if(isset($messages)) {
+                        foreach ($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
                 <div class="input-icon">
                     <i class="fas fa-user icon"></i>
                     <input name="email" type="text" placeholder="email">

@@ -2,69 +2,22 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/menubars.css">
-    <link rel="stylesheet" type="text/css" href="public/css/timetable.css">
+    <link rel="stylesheet" type="text/css" href="public/css/notes.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
-    <title>TIMETABLE</title>
+    <title>NOTES</title>
 </head>
 <body>
 <div class="container">
-    <div class="day-table">
-        <div class="day-name">Monday</div>
-        <div class="lesson">
-            English
-            12-15
+    <div class="notes-board">
+        <div class="note">
+            <button class="button remove"><i class="fas fa-times-circle"></i></button>
+            <div class="note-content">
+                <textarea class="title" placeholder="Enter note title"></textarea>
+                <textarea class="content" placeholder="Enter note description here"></textarea>
+            </div>
         </div>
-        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
+        <button><i class="fas fa-plus-circle"></i></button>
     </div>
-    <div class="day-table">
-        <div class="day-name">Tuesday</div>
-        <div class="lesson">
-            English
-            12-15
-        </div>
-        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="day-table">
-        <div class="day-name">Wednesday</div>
-        <div class="lesson">
-            English
-            12-15
-        </div>
-        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="day-table">
-        <div class="day-name">Thursday</div>
-        <div class="lesson">
-            English
-            12-15
-        </div>
-        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="day-table">
-        <div class="day-name">Friday</div>
-        <div class="lesson">
-            English
-            12-15
-        </div>
-        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="day-table">
-        <div class="day-name">Saturday</div>
-        <div class="lesson">
-            English
-            12-15
-        </div>
-        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
-    </div>
-    <div class="day-table">
-        <div class="day-name">Sunday</div>
-        <div class="lesson">
-            English
-            12-15
-        </div>
-        <button class="add-lesson"><i class="fas fa-plus-circle"></i></button>
-    </div>
-
 </div>
 <div class="bars">
     <div class="menubar">
@@ -77,13 +30,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="timetable" class="active">
+                    <a href="timetable">
                         <span class="menu-icon"><i class="fas fa-calendar-day"></i></span>
                         <span class="title">TIMETABLE</span>
                     </a>
                 </li>
                 <li>
-                    <a href="notes">
+                    <a href="notes" class="active">
                         <span class="menu-icon"><i class="fas fa-sticky-note"></i></span>
                         <span class="title">NOTES</span>
                     </a>
@@ -129,7 +82,7 @@
     <div class="navbar">
         <a href="#menu" onclick="toggleMenu()"><i class="fas fa-bars"></i>
         </a> <!TODO: change href?>
-        <a href="welcome.html"><img src="public/img/logo.svg">
+        <a href="welcome"><img src="public/img/logo.svg">
         </a>
         <a href="#account"><i class="fas fa-user"></i>
         </a>
