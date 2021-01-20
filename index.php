@@ -14,6 +14,7 @@ Routing::get('user_account', 'DefaultController');
 Routing::get('welcome', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
+Routing::post('changePhoto', 'UserController');
 
 Routing::run($path);
 

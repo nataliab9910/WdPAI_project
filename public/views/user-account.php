@@ -15,7 +15,18 @@
     <div class="photo-container">
         <div class="header">Your photo</div>
         <div class="photo"><img src="public/img/user.png"></div>
-        <div class="submit-button"><button type="submit">Add photo</button></div>
+        <form action="changePhoto" method="POST" enctype="multipart/form-data">
+            <?php
+            if(isset($messages)) {
+                foreach ($messages as $message) {
+                    echo $message;
+                }
+            }
+            ?>
+            <input type="file" name="file">
+            <div class="submit-button"><button type="submit">Add photo</button></div>
+        </form>
+
     </div>
     <div class="password-container">
         <div class="header">Change password</div>

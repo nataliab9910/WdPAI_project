@@ -7,6 +7,7 @@ class User {
     private $password;
     private $name;
     private $surname;
+    private $image;
     // TODO user photo
 
     public function __construct(string $email, string $password, string $name, string $surname) {
@@ -48,6 +49,12 @@ class User {
         $this->surname = $surname;
     }
 
+    public function getImage(): string {
+        return $this->image;
+    }
 
+    public function setImage(string $image) {
+        $this->image = $image;
+    }
 
 }
