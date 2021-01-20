@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    background: #EBEAEA 0 0 no-repeat padding-box;
+    background-size: cover;
+
+    display: grid;
+    grid-template-columns: 3em repeat(4, 1fr) 3em;
+    grid-template-rows: 4em 1fr 6fr 3em;
+    grid-gap: 0.5em;
+
+    font: normal normal bold 20px/23px Trebuchet MS;
+}
+
+.name-container, .photo-container, .password-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+    padding: 0.5em;
+
+    background: #FFFFFFF5 0 0 no-repeat padding-box;
+    border: 1px solid #D8A9B4;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #BDB7B7;
+}
+
+.name-container {
+    grid-column: 3 / 5;
+    grid-row: 2 / 3;
+    justify-self: center;
+}
+
+.photo-container {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+    justify-self: end;
+}
+
+.password-container {
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+    justify-self: start;
+}
+
+form.password {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid #BDB7B7;
+    padding: 4vh 2vw 1vh 2vw;
+    width: 70%;
+    text-align: center;
+    font: normal normal bold 1em Trebuchet MS;
+    letter-spacing: 0.2px;
+    color: #2E4C7C;
+    background: none;
+    transform: translateX(-1em);
+}
+
+.input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    color: #D8A9B4;
+    font-size: 1em;
+    width: 1em;
+    padding: 4vh 0 1vh 1em;
+}
+
+::placeholder {
+    color: #BDB7B799;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.submit-button button:active, button:focus {
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 1px #BDB7B7;
+    transform: translateY(1px);
+}
+
+.submit-button button {
+    margin: 3vh;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background: transparent linear-gradient(180deg, #ECE3E3 0%, #D8A9B4 100%) 0 0 no-repeat padding-box;
+    box-shadow: 2px 2px 2px #BDB7B7;
+    border-radius: 25px;
+    text-align: center;
+    font: normal normal normal 1em Trebuchet MS;
+    letter-spacing: 0.3px;
+    color: #2E4C7C;
+    padding: 0 5%;
+}
+
+.photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo img {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1em 1em 0 0;
+}

@@ -2,16 +2,41 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/menubars.css">
-    <link rel="stylesheet" type="text/css" href="public/css/welcome.css">
+    <link rel="stylesheet" type="text/css" href="public/css/user-account.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
     <title>ACCOUNT</title>
 </head>
 <body>
 <div class="container">
-    user-account
-    change photo
-    change name or surname
-    change password
+    <div class="name-container">
+        <div class="header">Anna Kowalska</div>
+        <div class="text">anna@kowalska.com</div>
+    </div>
+    <div class="photo-container">
+        <div class="header">Your photo</div>
+        <div class="photo"><img src="public/img/user.png"></div>
+        <div class="submit-button"><button type="submit">Add new photo</button></div>
+    </div>
+    <div class="password-container">
+        <div class="header">Change password</div>
+        <form class="password">
+            <div class="input-icon">
+                <i class="fas fa-user icon"></i>
+                <input name="actual-password" type="text" placeholder="Current password">
+            </div>
+            <div class="input-icon">
+                <i class="fas fa-unlock-alt icon"></i>
+                <input name="new-password" type="password" placeholder="New password">
+            </div>
+            <div class="input-icon">
+                <i class="fas fa-unlock-alt icon"></i>
+                <input name="new-password-repeat" type="password" placeholder="Repeat new password">
+            </div>
+            <div class="submit-button">
+                <button class="submit-button" type="submit">Accept</button>
+            </div>
+        </form>
+    </div>
 </div>
 <div class="bars">
     <div class="menubar">
