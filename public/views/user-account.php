@@ -15,7 +15,7 @@
     <div class="photo-container">
         <div class="header">Your photo</div>
         <div class="photo"><img src="public/img/user.png"></div>
-        <div class="submit-button"><button type="submit">Add new photo</button></div>
+        <div class="submit-button"><button type="submit">Add photo</button></div>
     </div>
     <div class="password-container">
         <div class="header">Change password</div>
@@ -33,7 +33,7 @@
                 <input name="new-password-repeat" type="password" placeholder="Repeat new password">
             </div>
             <div class="submit-button">
-                <button class="submit-button" type="submit">Accept</button>
+                <button class="submit-button" type="submit">Confirm</button>
             </div>
         </form>
     </div>
