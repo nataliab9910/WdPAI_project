@@ -12,8 +12,8 @@
         <div class="note">
             <button class="button remove"><i class="fas fa-times-circle"></i></button>
             <div class="note-content">
-                <textarea class="title" placeholder="Enter note title"></textarea>
-                <textarea class="content" placeholder="Enter note description here"></textarea>
+                <textarea class="title" rows="1" placeholder="Enter note title"></textarea>
+                <textarea class="content" rows="15" placeholder="Enter note description here"></textarea>
             </div>
         </div>
         <button><i class="fas fa-plus-circle"></i></button>
