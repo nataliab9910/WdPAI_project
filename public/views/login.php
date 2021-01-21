@@ -31,14 +31,17 @@
             <div class="login-button">
                 <button type="submit">LOGIN</button>
             </div>
+        </form>
             <div class="or">
                 <p>or</p>
             </div>
+        <form class="sign-up" action="sign_up">
             <div class="sign-up-button">
                 <button>SIGN UP</button>
             </div>
-
         </form>
+
+
     </div>
     <div class="motto">
         <p>for the worthiest life</p>
