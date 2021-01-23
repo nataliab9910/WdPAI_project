@@ -109,8 +109,7 @@ input {
     color: #BDB7B799;
 }
 
-/*TODO textarea?*/
-textarea:focus, input:focus{
+input:focus{
     outline: none;
 }
 
@@ -194,34 +193,43 @@ textarea:focus, input:focus{
 
 @media only screen and (max-device-width: 1030px) {
 
-    .login-container, .logo {
-        width: 70%;
+    .container {
+        width: 100vw;
+        height: auto;
+        padding: 4em 0 0 0;
+        justify-content: start;
+
+        font: normal normal bold 1em Trebuchet MS;
     }
 
-    img {
-        height: 7vh;
+    .base-container {
+        font-size: 2em;
+        width: 80%;
     }
+
+    .task {
+        width: 100%;
+        height: auto;
+        margin: 1vh 0;
+    }
+
+
 
     * {
-        font-size: 25px;
+        font-size: 30px;
     }
 
-    .container {
-        justify-content: space-evenly;
+    h1 {
+        font-size: 1.5em;
+        margin: 0;
     }
 
-    p {
-        font-size: 1em;
-    }
-}
-
-@media only screen and (max-device-width: 420px) {
-
-    .login-container {
-        width: 100%;
+    h2 {
+        font-size: 0.7em;
     }
 
-    form {
-        margin: auto;
+    .function-button {
+        width: auto;
+        font-size: 50px;
     }
 }

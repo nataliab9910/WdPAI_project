@@ -8,6 +8,14 @@
 </head>
 <body>
 <div class="container">
+    <div class="welcome-text">
+        <h1>Hi!</h1>
+        <h1>How are you today?</h1>
+    </div>
+    <form class="search-bar base-container">
+        <button><i class="fas fa-search icon"></i></button>
+        <input name="search" type="text" placeholder="Google search...">
+    </form>
     <div class="calendar">
         <div class="header">
             <i class="fas fa-chevron-left" onclick="showPrev()"></i>
@@ -28,14 +36,6 @@
         </div>
         <div class="days">
         </div>
-    </div>
-    <form class="search-bar base-container">
-        <button><i class="fas fa-search icon"></i></button>
-        <input name="search" type="text" placeholder="Google search...">
-    </form>
-    <div class="welcome-text">
-        <h1>Hi!</h1>
-        <h1>How are you today?</h1>
     </div>
     <h1 class="tasks-navbar">Your tasks for today:</h1>
     <div class="tasks">

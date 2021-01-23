@@ -191,3 +191,86 @@ form.search-bar button:active {
 .task .function-button {
     font-size: 1em;
 }
+
+@media only screen and (max-device-width: 1030px) {
+
+    .container {
+        /*height: auto;*/
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calendar {
+        width: 90%;
+        height: auto;
+        padding-top: 1em;
+        margin: 1em 0;
+    }
+
+    .header i {
+        font-size: 1.5em;
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+        text-transform: capitalize;
+        letter-spacing: 0.2em;
+    }
+
+    .header p {
+        font-size: 1em;
+    }
+
+    .weekdays div {
+        font-size: 1em;
+    }
+
+    .days div {
+        font-size: 0.8em;
+    }
+
+    .base-container {
+        font-size: 2em;
+        width: 80%;
+    }
+
+    form.search-bar {
+        width: 70%;
+        margin: 1em 0;
+    }
+
+    .tasks {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .welcome-text h1 {
+        font-size: 2em;
+    }
+
+    .tasks-navbar {
+        margin: 0;
+    }
+}
+
+
+@media only screen and (max-device-width: 420px) {
+
+    .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .base-container {
+        font-size: 1em;
+        width: 80%;
+    }
+
+}

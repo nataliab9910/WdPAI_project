@@ -38,3 +38,14 @@ h2 {
     font-size: 2em;
     margin-bottom: 1vh;
 }
+
+@media only screen and (max-device-width: 1030px) {
+    .container {
+        height: auto;
+        flex-direction: column;
+        overflow-y: auto;
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+
+}

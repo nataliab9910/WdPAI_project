@@ -29,3 +29,20 @@ h1 {
     right: 1px;
     top: 1px;
 }
+
+@media only screen and (max-device-width: 1030px) {
+    .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        /*justify-content: center;*/
+        align-content: center;
+    }
+
+    .note {
+        padding: 1vh 1vw;
+        height: fit-content;
+        min-height: 10em;
+    }
+
+}

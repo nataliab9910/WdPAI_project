@@ -21,6 +21,10 @@
     font-size: 2em;
 }
 
+p {
+    font-size: 1.5em;
+}
+
 .sign-up-button button:active, button:focus {
     box-shadow: none;
 }
@@ -32,44 +36,9 @@
     background: transparent no-repeat padding-box;
 }
 
-.motto {
+.motto p {
     text-align: center;
     font: normal normal normal 4em Vladimir Script;
     letter-spacing: 0;
     color: #D8A9B4;
-}
-
-/*TODO move to style.css*/
-@media only screen and (max-device-width: 1030px) {
-
-    .login-container, .logo {
-        width: 70%;
-    }
-
-    img {
-        height: 7vh;
-    }
-
-    * {
-        font-size: 25px;
-    }
-
-    .container {
-        justify-content: space-evenly;
-    }
-
-    p {
-        font-size: 1em;
-    }
-}
-
-@media only screen and (max-device-width: 420px) {
-
-    .login-container {
-        width: 100%;
-    }
-
-    form {
-        margin: auto;
-    }
 }
