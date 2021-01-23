@@ -1,20 +1,8 @@
-body {
-    margin: 0;
-}
-
 .container {
-    width: 100vw;
-    height: 100vh;
-
-    background: #EBEAEA 0 0 no-repeat padding-box;
-    background-size: cover;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    font: normal normal bold 20px/23px Trebuchet MS;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1em;
 }
 
 .note {
@@ -22,4 +10,39 @@ body {
     border: 1px solid #D8A9B4;
     border-radius: 10px;
     box-shadow: 2px 2px 2px #BDB7B7;
+    place-self: center;
+    padding: 0 0.5em;
+
+    height: 90%;
+    width: 90%;
+
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 0.5em;
+}
+
+.note .function-button {
+    font-size: 1em;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+}
+
+@media only screen and (max-device-width: 1030px) {
+    .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        /*justify-content: center;*/
+        align-content: center;
+    }
+
+    .note {
+        padding: 1vh 1vw;
+        height: fit-content;
+        min-height: 10em;
+    }
+
 }

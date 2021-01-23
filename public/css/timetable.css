@@ -1,44 +1,20 @@
-body {
-    margin: 0;
-}
-
 .container {
-    width: 100vw;
-    height: 100vh;
-
-    background: #EBEAEA 0 0 no-repeat padding-box;
-    background-size: cover;
-
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    font: normal normal bold 20px/23px Trebuchet MS;
 }
 
-.day-table {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1em;
+.base-container {
+    height: 90%;
+    width: 100%;
+    justify-content: start;
+    margin: 0.5em;
+    padding-left: 0;
+    padding-right: 0;
 
-    background: #F8F7F7 0 0 no-repeat padding-box;
-    border: 1px solid #D8A9B4;
-    border-radius: 10px;
     box-shadow: 2px 2px 2px #BDB7B7;
 }
 
-.day-name {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    border-bottom: 1px solid #D8A9B4;
-    /*margin-bottom: 1vh;*/
-    padding: 1vh 0;
+h2 {
+    margin-bottom: 0.5em;
 }
 
 .lesson {
@@ -50,7 +26,7 @@ body {
 
     min-height: 2em;
     width: 100%;
-    background: #2E4C7C 0 0 no-repeat padding-box;
+    background: #D8A9B4 0 0 no-repeat padding-box;
     border: 1px solid #D8A9B4;
     box-shadow: 2px 2px 2px #BDB7B7;
 }
@@ -61,4 +37,15 @@ body {
     color: #D8A9B4;
     font-size: 2em;
     margin-bottom: 1vh;
+}
+
+@media only screen and (max-device-width: 1030px) {
+    .container {
+        height: auto;
+        flex-direction: column;
+        overflow-y: auto;
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+
 }

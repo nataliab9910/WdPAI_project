@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/login.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
     <title>SIGN UP</title>
 </head>
@@ -9,9 +10,9 @@
     <div class="logo">
         <img src="public/img/logo.svg">
     </div>
-    <div class="login-container">
+    <div class="base-container">
         <form class="login">
-            SIGN UP
+            <h1>SIGN UP</h1>
             <div class="input-icon">
                 <i class="fas fa-user icon"></i>
                 <input name="name" type="text" placeholder="name">
@@ -29,8 +30,8 @@
                 <input name="password" type="password" placeholder="password">
             </div>
 
-            <div class="login-button">
-                <button>create account</button>
+            <div class="submit-button">
+                <button>Create Account</button>
             </div>
 
         </form>

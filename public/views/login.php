@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/login.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
     <title>LOGIN</title>
 </head>
@@ -9,7 +10,7 @@
     <div class="logo">
         <img src="public/img/logo.svg">
     </div>
-    <div class="login-container">
+    <div class="base-container">
         <form class="login" action="login" method="POST">
             <div class="message">
                 <?php if (isset($messages)) {
@@ -28,16 +29,15 @@
                 <input name="password" type="password" placeholder="password">
             </div>
 
-            <div class="login-button">
+            <div class="submit-button">
                 <button type="submit">LOGIN</button>
             </div>
-            <div class="or">
-                <p>or</p>
-            </div>
-            <div class="sign-up-button">
+        </form>
+        <p>or</p>
+        <form class="sign-up" action="sign_up">
+            <div class="sign-up-button submit-button">
                 <button>SIGN UP</button>
             </div>
-
         </form>
     </div>
     <div class="motto">

@@ -33,6 +33,7 @@
     text-decoration: none;
     font-size: 2em;
     color: #2E4C7C;
+    cursor: pointer;
 }
 
 .navbar a.active {
@@ -133,7 +134,7 @@ img {
 
 @media only screen and (max-device-width: 1030px) {
 
-    * {
+    .title {
         font-size: 30px;
     }
 
