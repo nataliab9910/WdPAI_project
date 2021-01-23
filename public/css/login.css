@@ -1,0 +1,75 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    background: transparent linear-gradient(180deg, #FCFCFC 0%, #2E4C7C 100%) 0 0 no-repeat padding-box;
+    background-size: cover;
+
+    justify-content: space-around;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    padding: 4vh 0 1vh 1em;
+}
+
+.submit-button button {
+    font-size: 2em;
+}
+
+.sign-up-button button:active, button:focus {
+    box-shadow: none;
+}
+
+.sign-up-button button {
+    margin: 1vh 1%;
+    box-shadow: none;
+    border: none;
+    background: transparent no-repeat padding-box;
+}
+
+.motto {
+    text-align: center;
+    font: normal normal normal 4em Vladimir Script;
+    letter-spacing: 0;
+    color: #D8A9B4;
+}
+
+/*TODO move to style.css*/
+@media only screen and (max-device-width: 1030px) {
+
+    .login-container, .logo {
+        width: 70%;
+    }
+
+    img {
+        height: 7vh;
+    }
+
+    * {
+        font-size: 25px;
+    }
+
+    .container {
+        justify-content: space-evenly;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-device-width: 420px) {
+
+    .login-container {
+        width: 100%;
+    }
+
+    form {
+        margin: auto;
+    }
+}
