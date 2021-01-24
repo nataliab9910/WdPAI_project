@@ -171,11 +171,11 @@ input:focus{
 }
 
 .task {
-    width: 100%;
+    width: 90%;
     height: 100%;
     padding: 0 1vw;
 
-    background: #F8F7F7 0 0 no-repeat padding-box;
+    background: #FFFFFFF5 0 0 no-repeat padding-box;
     border: 1px solid #D8A9B4;
     border-radius: 10px;
     box-shadow: 2px 2px 2px #BDB7B7;
@@ -189,6 +189,16 @@ input:focus{
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
+}
+
+.task .function-button {
+    font-size: 1em;
+}
+
+.add-task form {
+    width: 100%;
+    margin: 0;
+    flex-direction: row;
 }
 
 @media only screen and (max-device-width: 1030px) {

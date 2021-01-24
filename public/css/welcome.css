@@ -188,10 +188,6 @@ form.search-bar button:active {
     height: 1em;
 }
 
-.task .function-button {
-    font-size: 1em;
-}
-
 @media only screen and (max-device-width: 1030px) {
 
     .container {

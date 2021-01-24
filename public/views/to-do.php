@@ -16,7 +16,12 @@
             <h3>Learn PHP</h3>
             <button class="function-button"><i class="fas fa-times-circle"></i></button>
         </div>
-        <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+        <div class="add-task task">
+            <form class="add-task">
+                <input name="title" type="text" placeholder="Add task...">
+                <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+            </form>
+        </div>
     </div>
     <div class="task-list">
         <h2 class="header">
@@ -26,7 +31,12 @@
             <h3>Learn PHP</h3>
             <button class="function-button"><i class="fas fa-times-circle"></i></button>
         </div>
-        <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+        <div class="add-task task">
+            <form class="add-task">
+                <input name="title" type="text" placeholder="Add task...">
+                <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+            </form>
+        </div>
     </div>
     <div class="task-list">
         <h2 class="header">
@@ -36,7 +46,12 @@
             <h3>Learn PHP</h3>
             <button class="function-button"><i class="fas fa-times-circle"></i></button>
         </div>
-        <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+        <div class="add-task task">
+            <form class="add-task">
+                <input name="title" type="text" placeholder="Add task...">
+                <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+            </form>
+        </div>
     </div>
     <div class="task-list">
         <h2 class="header">
@@ -46,7 +61,12 @@
             <h3>Learn PHP</h3>
             <button class="function-button"><i class="fas fa-times-circle"></i></button>
         </div>
-        <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+        <div class="add-task task">
+            <form class="add-task">
+                <input name="title" type="text" placeholder="Add task...">
+                <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+            </form>
+        </div>
     </div>
     <div class="bottom-bar">
         <div class="select-list">

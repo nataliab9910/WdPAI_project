@@ -15,6 +15,7 @@ Routing::get('welcome', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('changePhoto', 'UserController');
+Routing::post('addTask', 'TaskController');
 
 Routing::run($path);
 

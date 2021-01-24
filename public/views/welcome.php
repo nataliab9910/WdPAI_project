@@ -44,9 +44,19 @@
             <h3>do dishes</h3>
             <button class="function-button"><i class="fas fa-times-circle"></i></button>
         </div>
-        <button class="function-button">
-            <i class="fas fa-plus-circle"></i>
-        </button>
+        <div class="add-task task">
+            <form class="add-task" action="addTask" method="POST" enctype="multipart/form-data">
+                <?php
+                if(isset($messages)) {
+                    foreach ($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+                <input name="title" type="text" placeholder="Add task...">
+                <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+            </form>
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="public/scripts/calendar.js"></script>
