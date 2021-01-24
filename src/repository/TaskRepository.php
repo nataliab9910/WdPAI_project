@@ -26,6 +26,23 @@ class TaskRepository extends Repository {
        );
     }
 
+    public function getTasks(): array {
+
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM tasks
+        ');
+        $stmt->execute();
+        $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($tasks as $task) {
+            $result[] = new Task($task['title'], $task['completed']);
+        }
+
+        return $result;
+    }
+
     public function addTask(Task $task): void {
 
         $date = new DateTime();

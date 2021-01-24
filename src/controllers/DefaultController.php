@@ -28,8 +28,4 @@ class DefaultController extends AppController {
         $this->render('user-account');
     }
 
-    public function welcome() {
-        $this->render('welcome');
-    }
-
 }

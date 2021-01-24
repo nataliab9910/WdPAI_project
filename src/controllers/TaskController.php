@@ -19,9 +19,18 @@ class TaskController extends AppController {
             $task = new Task($_POST['title'], false);
             $this->taskRepository->addTask($task);
 
-            return $this->render('welcome', ['messages' => $this->messages]);
+            return $this->render('welcome', [
+                'tasks' => $this->taskRepository->getTasks(),
+                'messages' => $this->messages]);
         }
 
         return $this->render('welcome', ['messages' => $this->messages]);
+    }
+
+    public function tasks() {
+
+        $tasks = $this->taskRepository->getTasks();
+
+        $this->render('welcome', ['tasks' => $tasks]);
     }
 }

@@ -39,11 +39,17 @@
     </div>
     <h1 class="tasks-navbar">Your tasks for today:</h1>
     <div class="tasks">
+        <?php foreach ($tasks as $task): ?>
         <div class="task">
+            <? if ($task->getCompleted()): ?>
+            <input class="checkbox" type="checkbox" id="check-task" name="interest" value="coding" checked>
+            <? else: ?>
             <input class="checkbox" type="checkbox" id="check-task" name="interest" value="coding">
-            <h3>do dishes</h3>
+            <? endif; ?>
+            <h3><?= $task->getTitle(); ?></h3>
             <button class="function-button"><i class="fas fa-times-circle"></i></button>
         </div>
+        <?php endforeach; ?>
         <div class="add-task task">
             <form class="add-task" action="addTask" method="POST" enctype="multipart/form-data">
                 <?php

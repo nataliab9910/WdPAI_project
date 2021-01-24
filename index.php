@@ -11,7 +11,7 @@ Routing::get('sign_up', 'DefaultController');
 Routing::get('timetable', 'DefaultController');
 Routing::get('to_do', 'DefaultController');
 Routing::get('user_account', 'DefaultController');
-Routing::get('welcome', 'DefaultController');
+Routing::get('tasks', 'TaskController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('changePhoto', 'UserController');
