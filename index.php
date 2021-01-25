@@ -18,6 +18,7 @@ Routing::get('logout', 'SecurityController');
 Routing::post('login', 'SecurityController');
 Routing::post('signup', 'SecurityController');
 Routing::post('changePhoto', 'UserController');
+Routing::post('search', 'UserController');
 Routing::post('addTask', 'TaskController');
 
 Routing::run($path);

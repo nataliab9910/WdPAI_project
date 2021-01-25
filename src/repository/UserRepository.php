@@ -57,7 +57,12 @@ class UserRepository extends Repository {
         $users_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($users_info as $user_info) {
-            $user = new User($user_info['email'], '', $user_info['name'], $user_info['surname']);
+            $user = new User(
+                $user_info['email'],
+                '',
+                explode(' ', $user_info['name'])[0],
+                explode(' ', $user_info['name'])[1]
+            );
             $user->setImage('$user_info["photo"]');
             $user->setRole($user_info['role']);
             $result[] = $user;
@@ -66,8 +71,7 @@ class UserRepository extends Repository {
         return $result;
     }
 
-    public function addUser(User $user)
-    {
+    public function addUser(User $user) {
         if ($this->getUser($user->getEmail())) {
             // TODO exception
             return false;
@@ -99,8 +103,7 @@ class UserRepository extends Repository {
         return true;
     }
 
-    public function getUserDetailsId(User $user): int
-    {
+    public function getUserDetailsId(User $user): int {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.user_details WHERE name = :name AND surname = :surname
         ');
@@ -112,6 +115,18 @@ class UserRepository extends Repository {
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data['id'];
+    }
+
+    public function getUserByName(string $searchString) {
+        $searchString = '%'.strtolower($searchString).'%';
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM user_info WHERE LOWER(name) LIKE :search OR LOWER(email) LIKE :search OR LOWER(role) LIKE :search
+        ');
+        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
