@@ -47,7 +47,7 @@
             <input class="checkbox" type="checkbox" id="check-task" name="interest" value="coding">
             <? endif; ?>
             <h3><?= $task->getTitle(); ?></h3>
-            <button class="function-button"><i class="fas fa-times-circle"></i></button>
+            <button class="function-button" ><i class="fas fa-times-circle"></i></button>
         </div>
         <?php endforeach; ?>
         <div class="add-task task">

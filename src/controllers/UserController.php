@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../repository/UserRepository.php';
 
 class UserController extends AppController {
 
@@ -10,6 +11,17 @@ class UserController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $messages = [];
+    private $userRepository;
+
+    public function __construct() {
+        parent::__construct();
+        $this->userRepository = new UserRepository();
+    }
+
+    public function admin() {
+        $users = $this->userRepository->getUsersInfo();
+        $this->render('admin-page', ['users' => $users]);
+    }
 
     public function changePhoto() {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {

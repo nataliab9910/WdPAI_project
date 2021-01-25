@@ -46,6 +46,26 @@ class UserRepository extends Repository {
         return $userId['id'];
     }
 
+    public function getUsersInfo(): array {
+
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM user_info
+        ');
+        $stmt->execute();
+        $users_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($users_info as $user_info) {
+            $user = new User($user_info['email'], '', $user_info['name'], $user_info['surname']);
+            $user->setImage('$user_info["photo"]');
+            $user->setRole($user_info['role']);
+            $result[] = $user;
+        }
+
+        return $result;
+    }
+
     public function addUser(User $user)
     {
         if ($this->getUser($user->getEmail())) {
