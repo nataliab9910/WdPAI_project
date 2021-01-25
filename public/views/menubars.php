@@ -10,7 +10,7 @@
         <div class="options-list">
             <ul>
                 <li>
-                    <a href="welcome" class="active">
+                    <a href="tasks" class="active">
                         <span class="menu-icon"><i class="fas fa-play"></i></span>
                         <span class="title">START</span>
                     </a>

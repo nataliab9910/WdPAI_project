@@ -189,7 +189,7 @@ form.search-bar button:active {
     height: 1em;
 }
 
-@media only screen and (max-device-width: 1030px) {
+@media only screen and (max-device-width: 1200px) {
 
     .container {
         /*height: auto;*/
@@ -240,9 +240,12 @@ form.search-bar button:active {
     }
 
     .tasks {
+        align-self: center;
         display: flex;
         flex-direction: column;
         align-content: center;
+        margin: 0;
+        padding: 0 1em 1em 1em;
     }
 
     .welcome-text h1 {
@@ -254,11 +257,26 @@ form.search-bar button:active {
     }
 }
 
+@media only screen and (max-height: 840px) {
+
+    .calendar {
+        transform: scale(0.75);
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .container {
+        height: min-content;
+        display: flex;
+        justify-content: space-between;
+        overflow-y: scroll;
+    }
+}
+
 
 @media only screen and (max-device-width: 420px) {
 
     .container {
-        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;

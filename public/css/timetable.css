@@ -39,7 +39,7 @@ h2 {
     margin-bottom: 1vh;
 }
 
-@media only screen and (max-device-width: 1030px) {
+@media only screen and (max-device-width: 1200px) {
     .container {
         height: auto;
         flex-direction: column;

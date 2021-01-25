@@ -14,6 +14,7 @@ Routing::get('user_account', 'DefaultController');
 Routing::get('tasks', 'TaskController');
 
 Routing::post('login', 'SecurityController');
+Routing::post('signup', 'SecurityController');
 Routing::post('changePhoto', 'UserController');
 Routing::post('addTask', 'TaskController');
 

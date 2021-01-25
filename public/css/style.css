@@ -6,7 +6,7 @@ body {
     width: calc(100vw - 3.5em);
     height: calc(100vh - 3em);
     padding: 3em 0 0 3.5em;
-    overflow-y: scroll;
+    /*overflow-y: auto;*/
 
     background: #EBEAEA 0 0 no-repeat padding-box;
     background-size: cover;
@@ -204,7 +204,7 @@ input:focus{
     flex-direction: row;
 }
 
-@media only screen and (max-device-width: 1030px) {
+@media only screen and (max-device-width: 1200px) {
 
     .container {
         width: 100vw;
@@ -222,7 +222,9 @@ input:focus{
 
     .task {
         width: 100%;
-        margin: 1vh 0;
+        height: 3em;
+        min-height: 50px;
+        padding: 0 0.2em;
     }
 
     * {

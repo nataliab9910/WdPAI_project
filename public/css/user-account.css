@@ -75,7 +75,7 @@ h2 {
     margin: 0.2em;
 }
 
-@media only screen and (max-device-width: 1030px) {
+@media only screen and (max-device-width: 1200px) {
     .container {
         display: flex;
         flex-direction: column;
