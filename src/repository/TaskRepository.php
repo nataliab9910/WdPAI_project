@@ -8,7 +8,7 @@ class TaskRepository extends Repository {
     public function getTask(int $id): ?Task {
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.tasks WHERE id = :id
+            SELECT * FROM tasks WHERE id = :id
         ');
 
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -31,8 +31,9 @@ class TaskRepository extends Repository {
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM tasks
+            SELECT * FROM tasks WHERE id_user = :id_user
         ');
+        $stmt->bindParam(':id_user', $_COOKIE['user'], PDO::PARAM_INT);
         $stmt->execute();
         $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -47,11 +48,10 @@ class TaskRepository extends Repository {
 
         $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
-           INSERT INTO public.tasks (id_user, title, created_at) VALUES (?, ?, ?)
+           INSERT INTO tasks (id_user, title, created_at) VALUES (?, ?, ?)
         ');
 
-        // TODO get this from user session
-        $assignedById = 1;
+        $assignedById = $_COOKIE['user'];
 
         $stmt->execute([
             $assignedById,

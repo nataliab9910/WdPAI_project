@@ -2,21 +2,20 @@
 
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/User.php';
-require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__ . '/../repository/UserRepository.php';
 
 class SecurityController extends AppController {
 
     private $userRepository;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->userRepository = new UserRepository();
     }
 
     public function login() {
 
-        if(!$this->isPost()) {
+        if (!$this->isPost()) {
             return $this->render('login');
         }
 
@@ -25,7 +24,7 @@ class SecurityController extends AppController {
 
         $user = $this->userRepository->getUser($email);
 
-        if(!$user) {
+        if (!$user) {
             return $this->render('login', ['messages' => ['User doesn\'t exist!']]);
         }
 
@@ -38,13 +37,17 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
+        $cookieName = 'user';
+        $cookieValue = $this->userRepository->getUserID($email);
+        setcookie($cookieName, $cookieValue, time() + (86400 * 7), "/");
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/tasks");
     }
 
     public function signup() {
 
-        if(!$this->isPost()) {
+        if (!$this->isPost()) {
             return $this->render('sign-up');
         }
 
@@ -66,6 +69,17 @@ class SecurityController extends AppController {
 
         return $this->render('login', ['messages' => ['Registration successful!']]);
 
+    }
+
+    public function logout() {
+
+        if (isset($_COOKIE['user'])) {
+            setcookie($_COOKIE['user'], '', time()-70000000000, '/');
+            // TODO sth is wrong
+        }
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/login");
     }
 
 }

@@ -27,6 +27,25 @@ class UserRepository extends Repository {
         );
     }
 
+    public function getUserID(string $email) {
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT id FROM users u WHERE email = :email
+        ');
+
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $userId = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($userId == false) {
+            // TODO change null to exception
+            return null;
+        }
+
+        return $userId['id'];
+    }
+
     public function addUser(User $user)
     {
         if ($this->getUser($user->getEmail())) {
@@ -44,23 +63,16 @@ class UserRepository extends Repository {
             $user->getSurname()
         ]);
 
-        $stmt = $stmt = $this->database->connect()->prepare("
-            SELECT id FROM roles WHERE role = 'user'
-        ");
-        $stmt->execute();
-        $id_role = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
-
         $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users (email, password, id_user_details, id_role, created_at)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO users (email, password, id_user_details, created_at)
+            VALUES (?, ?, ?, ?)
         ');
 
         $stmt->execute([
             $user->getEmail(),
             $user->getPassword(),
             $this->getUserDetailsId($user),
-            $id_role,
             $date->format('Y-m-d')
         ]);
 

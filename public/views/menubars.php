@@ -38,7 +38,7 @@
         <div class="goodbye-list">
             <ul>
                 <li>
-                    <a href="login">
+                    <a href="logout">
                         <span class="menu-icon"><i class="fas fa-sign-out-alt"></i></span>
                         <span class="title">LOGOUT</span>
                     </a>

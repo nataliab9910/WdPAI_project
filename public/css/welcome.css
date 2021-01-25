@@ -264,7 +264,7 @@ form.search-bar button:active {
     }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1200px) {
     .container {
         height: min-content;
         display: flex;
