@@ -76,6 +76,7 @@ class UserRepository extends Repository {
         $users_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($users_info as $user_info) {
+
             $user = new User(
                 $user_info['email'],
                 '',
@@ -146,6 +147,37 @@ class UserRepository extends Repository {
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function addToLogs() {
+
+        if (empty($_SESSION['user_email'])) {
+            return;
+        }
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT name, email FROM user_info WHERE email = :email
+        ');
+        $stmt->bindParam(':email', $_SESSION['user_email'], PDO::PARAM_STR);
+        $stmt->execute();
+
+        $userData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $date = new DateTime();
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO logs (name, surname, email, datetime, host, agent)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ');
+
+        $name = explode(' ', $userData[0]['name']);
+        $stmt->execute([
+            $name[0],
+            $name[1],
+            $userData[0]['email'],
+            $date->format('Y-m-d H:i:s.u'),
+            $_SERVER['HTTP_HOST'],
+            $_SERVER['HTTP_USER_AGENT']
+        ]);
     }
 
 }

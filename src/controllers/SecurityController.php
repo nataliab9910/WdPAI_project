@@ -14,6 +14,7 @@ class SecurityController extends AppController {
     }
 
     public function login() {
+
         if (!$this->isPost()) {
             return $this->render('login');
         }
@@ -72,12 +73,9 @@ class SecurityController extends AppController {
 
     public function logout() {
 
-        // TODO: add to logs
-
-        if (!empty($_SESSION['user_email'])) {
+        if (!empty($_SESSION['user_email']) || !empty($_SESSION['user_id'])) {
+            $this->userRepository->addToLogs();
             $_SESSION['user_email'] = "";
-        }
-        if (!empty($_SESSION['user_id'])) {
             $_SESSION['user_id'] = "";
         }
 
