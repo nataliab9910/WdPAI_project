@@ -1,6 +1,5 @@
 <?php
 
-
 class User {
 
     private $email;
@@ -13,11 +12,12 @@ class User {
 
     // TODO user photo
 
-    public function __construct(string $email, string $password, string $name, string $surname) {
+    public function __construct(string $email, string $password, string $name, string $surname, int $role = Routing::ROLE_USER) {
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
         $this->surname = $surname;
+        $this->role = $role;
     }
 
     public function getEmail(): string {

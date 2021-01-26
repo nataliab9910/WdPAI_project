@@ -14,7 +14,6 @@ class SecurityController extends AppController {
     }
 
     public function login() {
-
         if (!$this->isPost()) {
             return $this->render('login');
         }
@@ -33,14 +32,14 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['User with this email doesn\'t exist!']]);
         }
 
-        if (password_verify($user->getPassword(), $password)) {
+        if (!password_verify($password, $user->getPassword())) {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-        $cookieName = 'user';
-        $cookieValue = $this->userRepository->getUserID($email);
-        setcookie($cookieName, $cookieValue, time() + (86400 * 7), "/");
+        $user->setRole($this->userRepository->getRole($user->getEmail()));
 
+        $_SESSION['user_email'] = $user->getEmail();
+        $_SESSION['user_id'] = $this->userRepository->getUserID($user->getEmail());
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/tasks");
     }
@@ -73,10 +72,16 @@ class SecurityController extends AppController {
 
     public function logout() {
 
-        if (isset($_COOKIE['user'])) {
-            setcookie($_COOKIE['user'], '', time()-70000000000, '/');
-            // TODO sth is wrong
+        // TODO: add to logs
+
+        if (!empty($_SESSION['user_email'])) {
+            $_SESSION['user_email'] = "";
         }
+        if (!empty($_SESSION['user_id'])) {
+            $_SESSION['user_id'] = "";
+        }
+
+        session_destroy();
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/login");

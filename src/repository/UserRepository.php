@@ -23,7 +23,7 @@ class UserRepository extends Repository {
         }
 
         return new User(
-            $user['email'], $user['password'], $user['name'], $user['surname']
+            $user['email'], $user['password'], $user['name'], $user['surname'], $user['id_role']
         );
     }
 
@@ -44,6 +44,25 @@ class UserRepository extends Repository {
         }
 
         return $userId['id'];
+    }
+
+    public function getRole(string $email) {
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT id_role FROM users WHERE email = :email
+        ');
+
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $role = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($role == false) {
+            // TODO change null to exception
+            return null;
+        }
+
+        return $role['id_role'];
     }
 
     public function getUsersInfo(): array {
