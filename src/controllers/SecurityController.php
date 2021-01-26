@@ -57,7 +57,7 @@ class SecurityController extends AppController {
         $surname = $_POST['surname'];
 
         if ($password !== $confirmedPassword) {
-            return $this->render('register', ['messages' => ['Passwords does not match.']]);
+            return $this->render('sign-up', ['messages' => ['Passwords does not match.']]);
         }
 
         $user = new User($email, password_hash($password, PASSWORD_BCRYPT), $name, $surname);

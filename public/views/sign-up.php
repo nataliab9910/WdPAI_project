@@ -13,6 +13,14 @@
     </div>
     <div class="base-container">
         <form class="login" action="signup" method="POST">
+            <div class="message">
+                <?php if (isset($messages)) {
+                    foreach ($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+            </div>
             <h1>SIGN UP</h1>
             <div class="input-icon">
                 <i class="fas fa-user icon"></i>

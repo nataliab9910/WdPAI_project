@@ -175,7 +175,7 @@ form.search-bar button:active {
     height: 100%;
 
     margin: 0 2em;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
