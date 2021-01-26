@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/welcome.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/scripts/task-check.js" defer></script>
     <title>WELCOME</title>
 </head>
 <body>
@@ -40,12 +41,9 @@
     <h1 class="tasks-navbar">Your tasks for today:</h1>
     <div class="tasks">
         <?php foreach ($tasks as $task): ?>
-        <div class="task">
-            <? if ($task->getCompleted()): ?>
-            <input class="checkbox" type="checkbox" id="check-task" name="interest" value="coding" checked>
-            <? else: ?>
-            <input class="checkbox" type="checkbox" id="check-task" name="interest" value="coding">
-            <? endif; ?>
+        <div class="task" id="<?= $task->getId(); ?>">
+            <input class="checkbox" type="checkbox" id="check-task" name="interest" value="coding"
+                <? if ($task->getCompleted()): ?> checked <? endif; ?>>
             <h3><?= $task->getTitle(); ?></h3>
             <button class="function-button" ><i class="fas fa-times-circle"></i></button>
         </div>

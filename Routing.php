@@ -24,7 +24,9 @@ class Routing {
     }
 
     public static function run($url) {
-        $action = explode("/", $url)[0];
+        $urlParts = explode("/", $url);
+        $action = $urlParts[0];
+        $id = $urlParts[1] ?? ''; // TODO walidacja czy to int i czy na pewno możemy przekazać do kontrolera
         $route = self::getRoute($action);
         $user = new User("", "", "", "", self::ROLE_ANONYM);
 
@@ -44,7 +46,7 @@ class Routing {
         $controller = $route->getView();
         if ($action) {
             $object = new $controller;
-            $object->$action();
+            $object->$action($id);
         } else {
             if ($user->getRole() > self::ROLE_ANONYM) {
                 (new TaskController())->tasks();

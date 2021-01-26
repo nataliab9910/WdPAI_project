@@ -139,7 +139,7 @@ form.search-bar button {
 form.search-bar button:active {
     outline: none;
     border: none;
-    transform: translateY(1px);
+    transform: translateX(1px);
 }
 
 .welcome-text {

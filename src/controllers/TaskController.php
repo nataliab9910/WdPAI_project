@@ -14,6 +14,11 @@ class TaskController extends AppController {
         $this->taskRepository = new TaskRepository();
     }
 
+    public function tasks() {
+        $tasks = $this->taskRepository->getTasks();
+        $this->render('welcome', ['tasks' => $tasks]);
+    }
+
     public function addTask() {
         if ($this->isPost()) {
             $task = new Task($_POST['title'], false);
@@ -27,10 +32,13 @@ class TaskController extends AppController {
         return $this->render('welcome', ['messages' => $this->messages]);
     }
 
-    public function tasks() {
+    public function checkTask(int $id) {
+        $this->taskRepository->check($id);
+        http_response_code(200);
+    }
 
-        $tasks = $this->taskRepository->getTasks();
-
-        $this->render('welcome', ['tasks' => $tasks]);
+    public function deleteTask(int $id) {
+        $this->taskRepository->delete($id);
+        http_response_code(200);
     }
 }

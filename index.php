@@ -16,6 +16,8 @@ Routing::get('user_account', 'DefaultController', Routing::ROLE_USER);
 Routing::get('tasks', 'TaskController', Routing::ROLE_USER);
 Routing::get('admin', 'UserController', Routing::ROLE_ADMIN);
 Routing::get('logout', 'SecurityController', Routing::ROLE_USER);
+Routing::get('checkTask', 'TaskController', Routing::ROLE_USER);
+Routing::get('deleteTask', 'TaskController', Routing::ROLE_USER);
 
 Routing::post('login', 'SecurityController');
 Routing::post('signup', 'SecurityController');

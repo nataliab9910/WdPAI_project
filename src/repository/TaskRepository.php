@@ -38,7 +38,11 @@ class TaskRepository extends Repository {
         $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($tasks as $task) {
-            $result[] = new Task($task['title'], $task['completed']);
+            $result[] = new Task(
+                $task['title'],
+                $task['completed'],
+                $task['id']
+            );
         }
 
         return $result;
@@ -58,5 +62,21 @@ class TaskRepository extends Repository {
             $task->getTitle(),
             $date->format('Y-m-d')
         ]);
+    }
+
+    public function check(int $id) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE tasks SET completed = CASE WHEN completed = true THEN false ELSE true END WHERE id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function delete(int $id) {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM tasks WHERE id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

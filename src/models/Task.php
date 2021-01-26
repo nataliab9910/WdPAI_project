@@ -5,10 +5,12 @@ class Task {
 
     private $title;
     private $completed;
+    private $id;
 
-    public function __construct($title, $completed) {
+    public function __construct($title, $completed = false, $id = null) {
         $this->title = $title;
         $this->completed = $completed;
+        $this->id = $id;
     }
 
     public function getTitle() {
@@ -26,4 +28,13 @@ class Task {
     public function setCompleted($completed): void {
         $this->completed = $completed;
     }
+
+    public function getId(): int {
+        return $this->id;
+    }
+
+    public function setId(int $id): void {
+        $this->id = $id;
+    }
+
 }
