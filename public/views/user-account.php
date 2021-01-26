@@ -13,7 +13,7 @@
         <h2>anna@kowalska.com</h2>
     </div>
     <div class="base-container photo-container">
-        <img class="photo" src="public/img/user.png">
+        <img class="photo" src="<?php if(isset($user_photo)) echo $user_photo; else echo '/public/img/user.png'; ?>">
         <form action="changePhoto" method="POST" enctype="multipart/form-data">
             <?php
             if(isset($messages)) {
@@ -23,15 +23,23 @@
             }
             ?>
             <input type="file" name="file">
-            <div class="submit-button"><button type="submit">Change photo</button></div>
+            <div class="submit-button">
+                <button type="submit">Change photo</button>
+            </div>
         </form>
     </div>
     <div class="base-container password-container">
         <h2>Change password</h2>
-        <form class="password">
+        <form class="password" action="changePassword" method="POST">
+            <?php if (isset($passmessages)) {
+                foreach ($passmessages as $message) {
+                    echo $message;
+                }
+            }
+            ?>
             <div class="input-icon">
                 <i class="fas fa-user icon"></i>
-                <input name="actual-password" type="text" placeholder="Current password">
+                <input name="current-password" type="password" placeholder="Current password">
             </div>
             <div class="input-icon">
                 <i class="fas fa-unlock-alt icon"></i>
@@ -39,10 +47,10 @@
             </div>
             <div class="input-icon">
                 <i class="fas fa-unlock-alt icon"></i>
-                <input name="new-password-repeat" type="password" placeholder="Repeat new password">
+                <input name="new-password-confirm" type="password" placeholder="Confirm new password">
             </div>
             <div class="submit-button">
-                <button class="submit-button" type="submit">Confirm</button>
+                <button type="submit">Confirm</button>
             </div>
         </form>
     </div>

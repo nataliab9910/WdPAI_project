@@ -28,7 +28,6 @@
                 <i class="fas fa-unlock-alt icon"></i>
                 <input name="password" type="password" placeholder="password">
             </div>
-
             <div class="submit-button">
                 <button type="submit">LOGIN</button>
             </div>

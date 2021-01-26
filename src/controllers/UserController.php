@@ -23,10 +23,15 @@ class UserController extends AppController {
         $this->render('admin-page', ['users' => $users]);
     }
 
+    public function user_account() {
+        $user = $this->userRepository->getUserByEmail($_SESSION['user_email']);
+        $this->render('user-account', ['user_photo' => $user->getPhoto()]);
+    }
+
     public function search() {
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
-        if($contentType === "application/json") {
+        if ($contentType === "application/json") {
             $content = trim(file_get_contents("php://input"));
             $decoded = json_decode($content, true);
 
@@ -37,19 +42,52 @@ class UserController extends AppController {
         }
     }
 
-    public function changePhoto() {
-        if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
-
-            move_uploaded_file(
-                $_FILES['file']['tmp_name'],
-                dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name']
-            );
-
-            // TODO: change user image
-
+    public function changePassword() {
+        if (!$this->isPost()) {
+            return $this->render('user-account');
         }
 
-        return $this->render('user-account', ['messages' => $this->messages]);
+        $currentPassword = $_POST['current-password'];
+        $newPassword = $_POST['new-password'];
+        $confirmedPassword = $_POST['new-password-confirm'];
+
+        if ($newPassword !== $confirmedPassword) {
+            return $this->render('user-account', ['passmessages' => ['Passwords does not match.']]);
+        }
+
+        if (!isset($_SESSION['user_email'])) {
+            return $this->render('login', ['passmessages' => ['Something went wrong.']]);
+        }
+
+        $user = $this->userRepository->getUserByEmail($_SESSION['user_email']);
+        if (!password_verify($currentPassword, $user->getPassword())) {
+            return $this->render('user-account', ['passmessages' => ['Wrong password!']]);
+        }
+
+        if ($currentPassword === $newPassword) {
+            return $this->render('user-account', ['passmessages' => ["New password can't be the same as old."]]);
+        }
+
+        $this->userRepository->changePassword($user, password_hash($newPassword, PASSWORD_BCRYPT));
+        return $this->render('user-account', ['passmessages' => ["Password changed!"]]);
+    }
+
+    public function changePhoto() {
+        if (!($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file']))) {
+            return $this->render('user-account', ['messages' => ['Problem with uploaded photo.']]);
+        }
+
+        move_uploaded_file(
+            $_FILES['file']['tmp_name'],
+            dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name']
+        );
+
+        $photo = substr(self::UPLOAD_DIRECTORY, 4).$_FILES['file']['name'];
+        $user = $this->userRepository->getUserByEmail($_SESSION['user_email']);
+        $this->userRepository->changePhoto($user, $photo);
+        // TODO: change user image
+
+        return $this->render('user-account', ['Changed user photo.' => $this->messages, 'user_photo' => $photo]);
     }
 
     private function validate(array $file): bool {

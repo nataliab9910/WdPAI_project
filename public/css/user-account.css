@@ -1,7 +1,7 @@
 .container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 4em 1fr 6fr 3em;
+    grid-template-columns: 1fr repeat(2, 2fr) 1fr;
+    grid-template-rows: 2em 1fr 6fr 2em;
     grid-gap: 0.5em;
 }
 
@@ -44,11 +44,11 @@
 
 form {
     margin: 2em 0;
+    justify-content: space-evenly;
 }
 
 input {
     font: normal normal bold 1em Trebuchet MS;
-    transform: translateX(-1em);
 }
 
 .icon {
@@ -62,10 +62,19 @@ input {
     flex-direction: column;
     align-items: center;
 
-    width: 70%;
+    max-width: 70%;
     height: auto;
+    max-height: 70%;
     object-fit: cover;
-    border-radius: 1em 1em 0 0;
+    border-radius: 50%;
+}
+
+.input-icon {
+    width: 80%;
+}
+
+button {
+    transform: scale(1.5);
 }
 
 h1 {

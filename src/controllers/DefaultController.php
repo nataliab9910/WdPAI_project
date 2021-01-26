@@ -24,10 +24,6 @@ class DefaultController extends AppController {
         $this->render('to-do');
     }
 
-    public function user_account() {
-        $this->render('user-account');
-    }
-
     public function google() {
         $search_url = "https://www.google.com/search?q=";
 

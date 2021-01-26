@@ -142,6 +142,25 @@ class UserRepository extends Repository {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function changePassword(User $user, string $password) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users SET password = :password WHERE email = :email
+        ');
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $_SESSION['user_email'], PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
+    public function changePhoto(User $user, string $photo) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE user_details SET photo = :photo WHERE id = :id
+        ');
+        $id = $user->getIdUserDetails();
+        $stmt->bindParam(':photo', $photo, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
     public function addToLogs() {
 
         if (empty($_SESSION['user_email'])) {
