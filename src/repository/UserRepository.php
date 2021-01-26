@@ -5,11 +5,11 @@ require_once __DIR__ . '/../models/User.php';
 
 class UserRepository extends Repository {
 
-    public function getUser(string $email): ?User {
+    public function getUserByEmail(string $email): ?User {
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM users u LEFT JOIN user_details ud 
-            ON u.id_user_details = ud.id WHERE email = :email
+            SELECT * FROM view_all_user_details
+            WHERE email = :email
         ');
 
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -23,54 +23,43 @@ class UserRepository extends Repository {
         }
 
         return new User(
-            $user['email'], $user['password'], $user['name'], $user['surname'], $user['id_role']
+            $user['name'],
+            $user['surname'],
+            $user['email'],
+            $user['password'],
+            $user['photo'],
+            $user['id'],
+            $user['id_role'],
+            $user['id_user_details']
         );
     }
 
-    public function getUserID(string $email) {
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT id FROM users u WHERE email = :email
-        ');
-
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $userId = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($userId == false) {
-            // TODO change null to exception
-            return null;
-        }
-
-        return $userId['id'];
-    }
-
-    public function getRole(string $email) {
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT id_role FROM users WHERE email = :email
-        ');
-
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->execute();
-
-        $role = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($role == false) {
-            // TODO change null to exception
-            return null;
-        }
-
-        return $role['id_role'];
-    }
+    // TODO
+    //public function getUserID(string $email) {
+    //
+    //    $stmt = $this->database->connect()->prepare('
+    //        SELECT id FROM users u WHERE email = :email
+    //    ');
+    //
+    //    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    //    $stmt->execute();
+    //
+    //    $userId = $stmt->fetch(PDO::FETCH_ASSOC);
+    //
+    //    if ($userId == false) {
+    //        // TODO change null to exception
+    //        return null;
+    //    }
+    //
+    //    return $userId['id'];
+    //}
 
     public function getUsersInfo(): array {
-
+        // used in admin page to show all users with their emails, roles and photos
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM user_info
+            SELECT * FROM view_user_info
         ');
         $stmt->execute();
         $users_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -78,13 +67,14 @@ class UserRepository extends Repository {
         foreach ($users_info as $user_info) {
 
             $user = new User(
+                explode(' ', $user_info['name'])[0],
+                explode(' ', $user_info['name'])[1],
                 $user_info['email'],
                 '',
-                explode(' ', $user_info['name'])[0],
-                explode(' ', $user_info['name'])[1]
+                $user_info["photo"],
+                $user_info["id"],
+                $user_info['id_role']
             );
-            $user->setImage('$user_info["photo"]');
-            $user->setRole($user_info['role']);
             $result[] = $user;
         }
 
@@ -92,19 +82,21 @@ class UserRepository extends Repository {
     }
 
     public function addUser(User $user) {
-        if ($this->getUser($user->getEmail())) {
+        // check if user with this email already exists in database
+        if ($this->getUserByEmail($user->getEmail())) {
             // TODO exception
             return false;
         }
 
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO user_details (name, surname)
-            VALUES (?, ?)
+            INSERT INTO user_details (name, surname, photo)
+            VALUES (?, ?, ?)
         ');
 
         $stmt->execute([
             $user->getName(),
-            $user->getSurname()
+            $user->getSurname(),
+            $user->getPhoto()
         ]);
 
         $date = new DateTime();
@@ -138,10 +130,11 @@ class UserRepository extends Repository {
     }
 
     public function getUserByName(string $searchString) {
+        // user in admin page to search in users
         $searchString = '%'.strtolower($searchString).'%';
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM user_info WHERE LOWER(name) LIKE :search OR LOWER(email) LIKE :search OR LOWER(role) LIKE :search
+            SELECT * FROM view_user_info WHERE LOWER(name) LIKE :search OR LOWER(email) LIKE :search OR LOWER(role) LIKE :search
         ');
         $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
         $stmt->execute();
@@ -156,7 +149,7 @@ class UserRepository extends Repository {
         }
 
         $stmt = $this->database->connect()->prepare('
-            SELECT name, email FROM user_info WHERE email = :email
+            SELECT name, email FROM view_user_info WHERE email = :email
         ');
         $stmt->bindParam(':email', $_SESSION['user_email'], PDO::PARAM_STR);
         $stmt->execute();

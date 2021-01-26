@@ -14,15 +14,6 @@ class Route
         $this->role = $role;
     }
 
-    public function canUserAccessRoute(User $user)
-    {
-        if ($user->getRole() >= $this->role) {
-            return true;
-        }
-
-        return false;
-    }
-
     public function getUrl()
     {
         return $this->url;

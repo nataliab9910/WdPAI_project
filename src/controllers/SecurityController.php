@@ -22,7 +22,7 @@ class SecurityController extends AppController {
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $user = $this->userRepository->getUser($email);
+        $user = $this->userRepository->getUserByEmail($email);
 
         if (!$user) {
             return $this->render('login', ['messages' => ['User doesn\'t exist!']]);
@@ -37,10 +37,8 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-        $user->setRole($this->userRepository->getRole($user->getEmail()));
-
         $_SESSION['user_email'] = $user->getEmail();
-        $_SESSION['user_id'] = $this->userRepository->getUserID($user->getEmail());
+        $_SESSION['user_id'] = $user->getId();
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/tasks");
     }
@@ -51,34 +49,33 @@ class SecurityController extends AppController {
             return $this->render('sign-up');
         }
 
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirmedPassword = $_POST['confirmedPassword'];
-        $name = $_POST['name'];
-        $surname = $_POST['surname'];
 
         if ($password !== $confirmedPassword) {
             return $this->render('sign-up', ['messages' => ['Passwords does not match.']]);
         }
 
-        $user = new User($email, password_hash($password, PASSWORD_BCRYPT), $name, $surname);
+        $user = new User($name, $surname, $email, password_hash($password, PASSWORD_BCRYPT));
 
         if (!$this->userRepository->addUser($user)) {
             return $this->render('login', ['messages' => ['User with this email already exists!']]);
         }
 
         return $this->render('login', ['messages' => ['Registration successful!']]);
-
     }
 
     public function logout() {
 
         if (!empty($_SESSION['user_email']) || !empty($_SESSION['user_id'])) {
             $this->userRepository->addToLogs();
-            $_SESSION['user_email'] = "";
-            $_SESSION['user_id'] = "";
         }
 
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_id']);
         session_destroy();
 
         $url = "http://$_SERVER[HTTP_HOST]";

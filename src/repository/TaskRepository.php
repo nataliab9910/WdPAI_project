@@ -5,26 +5,27 @@ require_once __DIR__.'/../models/Task.php';
 
 class TaskRepository extends Repository {
 
-    public function getTask(int $id): ?Task {
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM tasks WHERE id = :id
-        ');
-
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-
-       $task = $stmt->fetch(PDO::FETCH_ASSOC);
-
-       if ($task == false) {
-           // TODO change null to exception
-           return null;
-       }
-
-       return new Task(
-           $task['title'], $task['completed']
-       );
-    }
+    // TODO
+    //public function getTask(int $id): ?Task {
+    //
+    //    $stmt = $this->database->connect()->prepare('
+    //        SELECT * FROM tasks WHERE id = :id
+    //    ');
+    //
+    //    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    //    $stmt->execute();
+    //
+    //   $task = $stmt->fetch(PDO::FETCH_ASSOC);
+    //
+    //   if ($task == false) {
+    //       // TODO change null to exception
+    //       return null;
+    //   }
+    //
+    //   return new Task(
+    //       $task['title'], $task['completed']
+    //   );
+    //}
 
     public function getTasks(): array {
 
@@ -44,7 +45,6 @@ class TaskRepository extends Repository {
                 $task['id']
             );
         }
-
         return $result;
     }
 

@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/welcome.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./public/scripts/task-check.js" defer></script>
+    <script type="text/javascript" src="./public/scripts/task-update.js" defer></script>
     <title>WELCOME</title>
 </head>
 <body>

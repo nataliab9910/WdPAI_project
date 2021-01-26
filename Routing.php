@@ -28,7 +28,7 @@ class Routing {
         $action = $urlParts[0];
         $id = $urlParts[1] ?? ''; // TODO walidacja czy to int i czy na pewno możemy przekazać do kontrolera
         $route = self::getRoute($action);
-        $user = new User("", "", "", "", self::ROLE_ANONYM);
+        $user = new User("", "", "");
 
         if (!$route) {
             die("Wrong url");
@@ -36,10 +36,10 @@ class Routing {
 
         if ($_SESSION && !empty($_SESSION['user_email'])) {
             $repository = new UserRepository();
-            $user = $repository->getUser($_SESSION['user_email']);
+            $user = $repository->getUserByEmail($_SESSION['user_email']);
         }
 
-        if ($route->getRole() > $user->getRole()) {
+        if ($route->getRole() > $user->getIdRole()) {
             die("Access denied");
         }
 
@@ -48,7 +48,7 @@ class Routing {
             $object = new $controller;
             $object->$action($id);
         } else {
-            if ($user->getRole() > self::ROLE_ANONYM) {
+            if ($user->getIdRole() > self::ROLE_ANONYM) {
                 (new TaskController())->tasks();
             } else {
                 (new DefaultController())->login();

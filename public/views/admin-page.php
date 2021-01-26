@@ -18,7 +18,7 @@
                 <img class="photo" src="public/img/user.png">
                 <h3 class="name"><?= $user->getName().' '.$user->getSurname(); ?></h3>
                 <h3 class="email"><?= $user->getEmail(); ?></h3>
-                <h3 class="role"><?= $user->getRole(); ?></h3>
+                <h3 class="role"><?php if($user->getIdRole() === 1) : ?>user<?php else : ?> admin <?php endif; ?></h3>
                 <button>Delete user</button>
                 <button>Delete photo</button>
                 <button>Give admin role</button>
