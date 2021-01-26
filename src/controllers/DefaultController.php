@@ -28,4 +28,15 @@ class DefaultController extends AppController {
         $this->render('user-account');
     }
 
+    public function google() {
+        $search_url = "https://www.google.com/search?q=";
+
+        if (!$this->isPost()) {
+            return $this->render('');
+        }
+
+        $keywords = $_POST['keywords'];
+        header("Location: ".$search_url.$keywords);
+    }
+
 }

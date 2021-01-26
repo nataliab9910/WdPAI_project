@@ -24,6 +24,7 @@ Routing::post('signup', 'SecurityController');
 Routing::post('changePhoto', 'UserController', Routing::ROLE_USER);
 Routing::post('search', 'UserController', Routing::ROLE_ADMIN);
 Routing::post('addTask', 'TaskController', Routing::ROLE_USER);
+Routing::post('google', 'DefaultController', Routing::ROLE_USER);
 
 Routing::run($path);
 
