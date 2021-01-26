@@ -68,7 +68,7 @@
     <div class="navbar">
         <a onclick="toggleMenu()"><i class="fas fa-bars"></i>
         </a> <!TODO: change href?>
-        <a href="welcome"><img src="public/img/logo.svg">
+        <a href="tasks"><img src="public/img/logo.svg">
         </a>
         <a href="user_account"><i class="fas fa-user"></i>
         </a>

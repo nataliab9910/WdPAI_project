@@ -9,11 +9,11 @@
 <body>
 <div class="container">
     <div class="base-container name-container">
-        <h1>Anna Kowalska</h1>
-        <h2>anna@kowalska.com</h2>
+        <h1><?php if(isset($user)) echo $user->getName().' '.$user->getSurname();?></h1>
+        <h2><?php if(isset($user)) echo $user->getEmail();?></h2>
     </div>
     <div class="base-container photo-container">
-        <img class="photo" src="<?php if(isset($user_photo)) echo $user_photo; else echo '/public/img/user.png'; ?>">
+        <img class="photo" src="<?php if(isset($user)) echo $user->getPhoto(); else echo '/public/img/user.png'; ?>">
         <form action="changePhoto" method="POST" enctype="multipart/form-data">
             <?php
             if(isset($messages)) {

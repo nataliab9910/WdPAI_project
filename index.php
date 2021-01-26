@@ -19,6 +19,10 @@ Routing::get('admin', 'UserController', Routing::ROLE_ADMIN);
 Routing::get('logout', 'SecurityController', Routing::ROLE_USER);
 Routing::get('checkTask', 'TaskController', Routing::ROLE_USER);
 Routing::get('deleteTask', 'TaskController', Routing::ROLE_USER);
+Routing::get('deleteUser', 'UserController', Routing::ROLE_ADMIN);
+Routing::get('deletePhoto', 'UserController', Routing::ROLE_ADMIN);
+Routing::get('giveUser', 'UserController', Routing::ROLE_ADMIN);
+Routing::get('giveAdmin', 'UserController', Routing::ROLE_ADMIN);
 
 Routing::post('login', 'SecurityController');
 Routing::post('signup', 'SecurityController');

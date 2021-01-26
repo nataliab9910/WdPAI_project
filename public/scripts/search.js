@@ -35,11 +35,8 @@ function createUser(user) {
     const clone = template.content.cloneNode(true);
     const div = clone.querySelector("div");
     div.id = user.id;
-
-    // TODO add images
-    // const image = clone.querySelector("img");
-    // image.src = `/public/uploads/${user.image}`;
-
+    const photo = clone.querySelector("img");
+    photo.src = user.photo;
     const name = clone.querySelector(".name");
     name.innerHTML = user.name;
     const email = clone.querySelector(".email");

@@ -9,6 +9,7 @@ class UserController extends AppController {
     const MAX_FILE_SIZE = 1024 * 1024; # 1024 kb
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
+    const DEFAULT_PHOTO = '/public/img/user.png';
 
     private $messages = [];
     private $userRepository;
@@ -25,7 +26,7 @@ class UserController extends AppController {
 
     public function user_account() {
         $user = $this->userRepository->getUserByEmail($_SESSION['user_email']);
-        $this->render('user-account', ['user_photo' => $user->getPhoto()]);
+        $this->render('user-account', ['user' => $user]);
     }
 
     public function search() {
@@ -84,10 +85,30 @@ class UserController extends AppController {
 
         $photo = substr(self::UPLOAD_DIRECTORY, 4).$_FILES['file']['name'];
         $user = $this->userRepository->getUserByEmail($_SESSION['user_email']);
+        $user->setPhoto($photo);
         $this->userRepository->changePhoto($user, $photo);
-        // TODO: change user image
 
-        return $this->render('user-account', ['Changed user photo.' => $this->messages, 'user_photo' => $photo]);
+        return $this->render('user-account', ['user' => $user]);
+    }
+
+    public function deleteUser($id) {
+        $this->userRepository->deleteUser($id);
+        http_response_code(200);
+    }
+
+    public function deletePhoto($id) {
+        $this->userRepository->deletePhoto($id);
+        http_response_code(200);
+    }
+
+    public function giveUser($id) {
+        $this->userRepository->giveRole($id, 'user');
+        http_response_code(200);
+    }
+
+    public function giveAdmin($id) {
+        $this->userRepository->giveRole($id, 'admin');
+        http_response_code(200);
     }
 
     private function validate(array $file): bool {
