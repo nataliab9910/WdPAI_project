@@ -186,6 +186,7 @@ form.search-bar button:active {
     margin: auto 0;
     width: 1em;
     height: 1em;
+    cursor: pointer;
 }
 
 @media only screen and (max-device-width: 1200px) {

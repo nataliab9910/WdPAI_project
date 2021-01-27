@@ -16,10 +16,6 @@ class DefaultController extends AppController {
         $this->render('sign-up');
     }
 
-    public function timetable() {
-        $this->render('timetable');
-    }
-
     public function to_do() {
         $this->render('to-do');
     }

@@ -23,12 +23,21 @@ h2 {
     justify-content: center;
     align-items: center;
     margin: 1vh;
+    text-align: center;
+    position: relative;
 
     min-height: 2em;
     width: 100%;
     background: #D8A9B4 0 0 no-repeat padding-box;
     border: 1px solid #D8A9B4;
     box-shadow: 2px 2px 2px #BDB7B7;
+}
+
+.function-button {
+    position: absolute;
+    margin: auto 0;
+    right: 2px;
+    font-size: 1em;
 }
 
 .add-lesson {
@@ -39,6 +48,55 @@ h2 {
     margin-bottom: 1vh;
 }
 
+.open-button {
+    background-color: #555;
+    color: #FFFFFFF5;
+    padding: 1em;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    width: auto;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+}
+
+.form-container {
+    padding: 0.5em 0;
+    max-width: 20em;
+    border: 3px solid #BDB7B7;
+    background-color: #FFFFFFF5;
+}
+
+.form-container input {
+    width: 100%;
+    margin: 0.2em 0;
+    padding: 0.2em 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 0.2em;
+}
+
+.form-container .cancel {
+    background-color: red;
+}
+
 @media only screen and (max-device-width: 1200px) {
     .container {
         height: auto;
@@ -46,6 +104,18 @@ h2 {
         overflow-y: auto;
         padding-right: 1em;
         padding-left: 1em;
+    }
+
+    .form-popup {
+        width: 100%;
+    }
+
+    .form-popup h2, .open-button {
+        font-size: 1.5em;
+    }
+
+    .form-container {
+        width: 100%;
     }
 
 }
