@@ -48,9 +48,9 @@ class UserController extends AppController {
             return $this->render('user-account');
         }
 
-        $currentPassword = $_POST['current-password'];
-        $newPassword = $_POST['new-password'];
-        $confirmedPassword = $_POST['new-password-confirm'];
+        $currentPassword = $_POST['currentPassword'];
+        $newPassword = $_POST['password'];
+        $confirmedPassword = $_POST['confirmedPassword'];
 
         if ($newPassword !== $confirmedPassword) {
             return $this->render('user-account', ['passmessages' => ['Passwords does not match.']]);

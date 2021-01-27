@@ -203,6 +203,12 @@ input:focus{
     flex-direction: row;
 }
 
+.no-valid {
+    border-bottom: 2px solid red;
+    box-shadow: 0 4px 2px -2px red;
+    outline: none;
+}
+
 @media only screen and (max-device-width: 1200px) {
 
     .container {

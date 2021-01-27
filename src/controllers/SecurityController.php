@@ -28,7 +28,6 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['User doesn\'t exist!']]);
         }
 
-        // TODO delete this function?
         if ($user->getEmail() !== $email) {
             return $this->render('login', ['messages' => ['User with this email doesn\'t exist!']]);
         }
@@ -54,6 +53,10 @@ class SecurityController extends AppController {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirmedPassword = $_POST['confirmedPassword'];
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->render('sign-up', ['messages' => ['Email address is not valid.']]);
+        }
 
         if ($password !== $confirmedPassword) {
             return $this->render('sign-up', ['messages' => ['Passwords does not match.']]);

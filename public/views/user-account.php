@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/user-account.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="public/scripts/validation.js" defer></script>
     <title>ACCOUNT</title>
 </head>
 <body>
@@ -35,7 +36,7 @@
     </div>
     <div class="base-container password-container">
         <h2>Change password</h2>
-        <form class="password" action="changePassword" method="POST">
+        <form class="password valid" action="changePassword" method="POST">
             <?php if (isset($passmessages)) {
                 foreach ($passmessages as $message) {
                     echo $message;
@@ -44,15 +45,15 @@
             ?>
             <div class="input-icon">
                 <i class="fas fa-user icon"></i>
-                <input name="current-password" type="password" placeholder="Current password">
+                <input name="currentPassword" type="password" placeholder="Current password">
             </div>
             <div class="input-icon">
                 <i class="fas fa-unlock-alt icon"></i>
-                <input name="new-password" type="password" placeholder="New password">
+                <input name="password" type="password" placeholder="New password">
             </div>
             <div class="input-icon">
                 <i class="fas fa-unlock-alt icon"></i>
-                <input name="new-password-confirm" type="password" placeholder="Confirm new password">
+                <input name="confirmedPassword" type="password" placeholder="Confirm new password">
             </div>
             <div class="submit-button">
                 <button type="submit">Confirm</button>

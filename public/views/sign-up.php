@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/login.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="public/scripts/signup-validation.js" defer></script>
+    <script type="text/javascript" src="public/scripts/validation.js" defer></script>
     <title>SIGN UP</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
         <img src="public/img/logo.svg">
     </div>
     <div class="base-container">
-        <form class="login" action="signup" method="POST">
+        <form class="login valid" action="signup" method="POST">
             <div class="message">
                 <?php if (isset($messages)) {
                     foreach ($messages as $message) {
