@@ -26,7 +26,7 @@ class UserController extends AppController {
 
     public function user_account() {
         $user = $this->userRepository->getUserByEmail($_SESSION['user_email']);
-        $this->render('user-account', ['user' => $user]);
+        $this->render('user-account');
     }
 
     public function search() {
@@ -88,7 +88,7 @@ class UserController extends AppController {
         $user->setPhoto($photo);
         $this->userRepository->changePhoto($user, $photo);
 
-        return $this->render('user-account', ['user' => $user]);
+        return $this->render('user-account');
     }
 
     public function deleteUser($id) {

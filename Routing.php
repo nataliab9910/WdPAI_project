@@ -1,16 +1,16 @@
 <?php
 
-require_once  'src/controllers/DefaultController.php';
-require_once  'src/controllers/SecurityController.php';
-require_once  'src/controllers/UserController.php';
-require_once  'src/controllers/TaskController.php';
-require_once  'src/models/User.php';
-require_once  'src/repository/UserRepository.php';
-require_once  'Route.php';
+require_once 'src/controllers/DefaultController.php';
+require_once 'src/controllers/SecurityController.php';
+require_once 'src/controllers/UserController.php';
+require_once 'src/controllers/TaskController.php';
+require_once 'src/models/User.php';
+require_once 'src/repository/UserRepository.php';
+require_once 'Route.php';
 
 class Routing {
-    public const ROLE_ADMIN  = 2;
-    public const ROLE_USER   = 1;
+    public const ROLE_ADMIN = 2;
+    public const ROLE_USER = 1;
     public const ROLE_ANONYM = 0;
 
     public static $routes;
@@ -31,16 +31,17 @@ class Routing {
         $user = new User("", "", "");
 
         if (!$route) {
-            die("Wrong url");
+            $route = self::getRoute("");
+            $action = "";
         }
 
-        if ($_SESSION && !empty($_SESSION['user_email'])) {
+        if (session_status() === PHP_SESSION_ACTIVE && !empty($_SESSION['user_email'])) {
             $repository = new UserRepository();
             $user = $repository->getUserByEmail($_SESSION['user_email']);
         }
 
         if ($route->getRole() > $user->getIdRole()) {
-            die("Access denied");
+            $action = "";
         }
 
         $controller = $route->getView();

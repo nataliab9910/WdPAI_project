@@ -8,15 +8,20 @@
 </head>
 <body>
 <div class="container">
+    <?php if (isset($_SESSION['user_email']))
+        $user = (new UserRepository())->getUserByEmail($_SESSION['user_email']); ?>
     <div class="base-container name-container">
-        <h1><?php if(isset($user)) echo $user->getName().' '.$user->getSurname();?></h1>
-        <h2><?php if(isset($user)) echo $user->getEmail();?></h2>
+        <h1><?php if (isset($user)) echo $user->getName() . ' ' . $user->getSurname(); ?></h1>
+        <h2><?php if (isset($user)) echo $user->getEmail(); ?></h2>
     </div>
     <div class="base-container photo-container">
-        <img class="photo" src="<?php if(isset($user)) echo $user->getPhoto(); else echo '/public/img/user.png'; ?>">
+        <img class="photo" src="
+        <?php if (isset($user)) echo $user->getPhoto();
+            else echo UserController::DEFAULT_PHOTO; ?>
+        ">
         <form action="changePhoto" method="POST" enctype="multipart/form-data">
             <?php
-            if(isset($messages)) {
+            if (isset($messages)) {
                 foreach ($messages as $message) {
                     echo $message;
                 }
