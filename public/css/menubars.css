@@ -33,6 +33,7 @@
     text-decoration: none;
     font-size: 2em;
     color: #2E4C7C;
+    cursor: pointer;
 }
 
 .navbar a.active {
@@ -47,7 +48,7 @@ img {
     position: fixed;
     overflow: hidden;
     left: 0;
-    top: 3em;
+    top: 3.5em;
     width: 2em;
     padding: 1em;
     height: 100%;
@@ -92,7 +93,9 @@ img {
 
 .menubar ul li a {
     position: relative;
-    width: 100%;
+    width: fit-content;
+    margin-bottom: 2em;
+    margin-left: 0.5em;
     display: flex;
     text-decoration: none;
     color: #2E4C7C;
@@ -115,8 +118,9 @@ img {
 .menubar ul li a .menu-icon {
     position: relative;
     display: block;
-    min-width: 2.5em;
-    height: 2.5em;
+    min-width: 1.5em;
+    margin-right: 0.5em;
+    height: 1em;
     font-size: 1.5em;
     text-align: center;
 }
@@ -124,11 +128,13 @@ img {
 .menubar ul li a .title {
     font-size: 1.2em;
     white-space: nowrap;
+    height: 1em;
+    padding-top: 0.3em;
 }
 
-@media only screen and (max-device-width: 1030px) {
+@media only screen and (max-device-width: 1200px) {
 
-    * {
+    .title {
         font-size: 30px;
     }
 

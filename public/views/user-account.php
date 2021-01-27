@@ -1,92 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/menubars.css">
-    <link rel="stylesheet" type="text/css" href="../css/welcome.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/user-account.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="public/scripts/validation.js" defer></script>
     <title>ACCOUNT</title>
 </head>
 <body>
 <div class="container">
-    user-account
-    change photo
-    change name or surname
-    change password
-</div>
-<div class="bars">
-    <div class="menubar">
-        <div class="options-list">
-            <ul>
-                <li>
-                    <a href="welcome.html" class="active">
-                        <span class="menu-icon"><i class="fas fa-play"></i></span>
-                        <span class="title">START</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="timetable.html">
-                        <span class="menu-icon"><i class="fas fa-calendar-day"></i></span>
-                        <span class="title">TIMETABLE</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="notes.html">
-                        <span class="menu-icon"><i class="fas fa-sticky-note"></i></span>
-                        <span class="title">NOTES</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="to-do.html">
-                        <span class="menu-icon"><i class="fas fa-tasks"></i></span>
-                        <span class="title">TO-DO LISTS</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="goodbye-list">
-            <ul>
-                <li>
-                    <a href="login.html">
-                        <span class="menu-icon"><i class="fas fa-sign-out-alt"></i></span>
-                        <span class="title">LOGOUT</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#mail">
-                        <span class="menu-icon"><i class="far fa-envelope"></i></span>
-                        <span class="title">CONTACT US</span>
-                    </a>
-                </li>
-                <li>
-                    <div class="social-buttons">
-                        <a href="#instagram">
-                            <span class="menu-icon"><i class="fab fa-instagram-square"></i></span>
-                        </a>
-                        <a href="#facebook">
-                            <span class="menu-icon"><i class="fab fa-facebook-square"></i></span>
-                        </a>
-                        <a href="#twitter">
-                            <span class="menu-icon"><i class="fab fa-twitter-square"></i></span>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+    <?php if (isset($_SESSION['user_email']))
+        $user = (new UserRepository())->getUserByEmail($_SESSION['user_email']); ?>
+    <div class="base-container name-container">
+        <h1><?php if (isset($user)) echo $user->getName() . ' ' . $user->getSurname(); ?></h1>
+        <h2><?php if (isset($user)) echo $user->getEmail(); ?></h2>
     </div>
-    <div class="navbar">
-        <a href="#menu" onclick="toggleMenu()"><i class="fas fa-bars"></i>
-        </a> <!TODO: change href?>
-        <a href="welcome.html"><img src="../img/logo.svg">
-        </a>
-        <a href="#account"><i class="fas fa-user"></i>
-        </a>
+    <div class="base-container photo-container">
+        <img class="photo" src="
+        <?php if (isset($user)) echo $user->getPhoto();
+            else echo UserController::DEFAULT_PHOTO; ?>
+        ">
+        <form action="changePhoto" method="POST" enctype="multipart/form-data">
+            <?php
+            if (isset($messages)) {
+                foreach ($messages as $message) {
+                    echo $message;
+                }
+            }
+            ?>
+            <input type="file" name="file">
+            <div class="submit-button">
+                <button type="submit">Change photo</button>
+            </div>
+        </form>
     </div>
-    <script type="text/javascript">
-        function toggleMenu() {
-            let menubar = document.querySelector('.menubar');
-            menubar.classList.toggle('active');
-        }
-    </script>
+    <div class="base-container password-container">
+        <h2>Change password</h2>
+        <form class="password valid" action="changePassword" method="POST">
+            <?php if (isset($passmessages)) {
+                foreach ($passmessages as $message) {
+                    echo $message;
+                }
+            }
+            ?>
+            <div class="input-icon">
+                <i class="fas fa-user icon"></i>
+                <input name="currentPassword" type="password" placeholder="Current password">
+            </div>
+            <div class="input-icon">
+                <i class="fas fa-unlock-alt icon"></i>
+                <input name="password" type="password" placeholder="New password">
+            </div>
+            <div class="input-icon">
+                <i class="fas fa-unlock-alt icon"></i>
+                <input name="confirmedPassword" type="password" placeholder="Confirm new password">
+            </div>
+            <div class="submit-button">
+                <button type="submit">Confirm</button>
+            </div>
+        </form>
+    </div>
 </div>
+<?php include 'menubars.php' ?>
 </body>
 </html>

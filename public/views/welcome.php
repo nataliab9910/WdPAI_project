@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/menubars.css">
-    <link rel="stylesheet" type="text/css" href="../css/welcome.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/welcome.css">
     <script src="https://kit.fontawesome.com/74a1017984.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/scripts/task-update.js" defer></script>
     <title>WELCOME</title>
 </head>
 <body>
 <div class="container">
+    <div class="welcome-text">
+        <h1>Hi!</h1>
+        <h1>How are you today?</h1>
+    </div>
+    <form class="search-bar base-container" action="google" method="POST">
+        <button type="submit"><i class="fas fa-search icon"></i></button>
+        <input name="keywords" type="text" placeholder="Google search...">
+    </form>
     <div class="calendar">
         <div class="header">
             <i class="fas fa-chevron-left" onclick="showPrev()"></i>
@@ -29,107 +38,32 @@
         <div class="days">
         </div>
     </div>
-    <div class="search-container">
-        <form class="search-bar">
-            <button><i class="fas fa-search icon"></i></button>
-            <input name="search" type="text" placeholder="Google search...">
-        </form>
-    </div>
-    <div class="welcome-text">
-        <div class="header-text">
-            Hi!
-            How are you today?
-        </div>
-    </div>
+    <h1 class="tasks-navbar">Your tasks for today:</h1>
     <div class="tasks">
-        <div class="header-text">
-            Your tasks for today:
+        <?php foreach ($tasks as $task): ?>
+        <div class="task" id="<?= $task->getId(); ?>">
+            <input class="checkbox" type="checkbox" id="check-task" name="interest" value="coding"
+                <? if ($task->getCompleted()): ?> checked <? endif; ?>>
+            <h3><?= $task->getTitle(); ?></h3>
+            <button class="function-button" ><i class="fas fa-times-circle"></i></button>
         </div>
-        <div class="task">
-            <input type="checkbox" id="coding" name="interest" value="coding">
-            <label for="coding">do dishes</label>
+        <?php endforeach; ?>
+        <div class="add-task task">
+            <form class="add-task" action="addTask" method="POST" enctype="multipart/form-data">
+                <?php
+                if(isset($messages)) {
+                    foreach ($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+                <input name="title" type="text" placeholder="Add task...">
+                <button class="function-button"><i class="fas fa-plus-circle"></i></button>
+            </form>
         </div>
-        <button>
-            <i class="fas fa-plus-circle"></i>
-        </button>
-
     </div>
 </div>
-<script type="text/javascript" src="../scripts/calendar.js"></script>
-<div class="bars">
-    <div class="menubar">
-        <div class="options-list">
-            <ul>
-                <li>
-                    <a href="welcome.html" class="active">
-                        <span class="menu-icon"><i class="fas fa-play"></i></span>
-                        <span class="title">START</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="timetable.html">
-                        <span class="menu-icon"><i class="fas fa-calendar-day"></i></span>
-                        <span class="title">TIMETABLE</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="notes.html">
-                        <span class="menu-icon"><i class="fas fa-sticky-note"></i></span>
-                        <span class="title">NOTES</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="to-do.html">
-                        <span class="menu-icon"><i class="fas fa-tasks"></i></span>
-                        <span class="title">TO-DO LISTS</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="goodbye-list">
-            <ul>
-                <li>
-                    <a href="login.html">
-                        <span class="menu-icon"><i class="fas fa-sign-out-alt"></i></span>
-                        <span class="title">LOGOUT</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#mail">
-                        <span class="menu-icon"><i class="far fa-envelope"></i></span>
-                        <span class="title">CONTACT US</span>
-                    </a>
-                </li>
-                <li>
-                    <div class="social-buttons">
-                        <a href="#instagram">
-                            <span class="menu-icon"><i class="fab fa-instagram-square"></i></span>
-                        </a>
-                        <a href="#facebook">
-                            <span class="menu-icon"><i class="fab fa-facebook-square"></i></span>
-                        </a>
-                        <a href="#twitter">
-                            <span class="menu-icon"><i class="fab fa-twitter-square"></i></span>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="navbar">
-        <a href="#menu" onclick="toggleMenu()"><i class="fas fa-bars"></i>
-        </a> <!TODO: change href?>
-        <a href="welcome.html"><img src="../img/logo.svg">
-        </a>
-        <a href="#account"><i class="fas fa-user"></i>
-        </a>
-    </div>
-    <script type="text/javascript">
-        function toggleMenu() {
-            let menubar = document.querySelector('.menubar');
-            menubar.classList.toggle('active');
-        }
-    </script>
-</div>
+<script type="text/javascript" src="public/scripts/calendar.js"></script>
+<?php include 'menubars.php' ?>
 </body>
 </html>

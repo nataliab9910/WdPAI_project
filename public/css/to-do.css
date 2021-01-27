@@ -1,24 +1,12 @@
-body {
-    margin: 0;
-}
-
 .container {
-    width: 100vw;
-    height: 100vh;
-
-    background: #EBEAEA 0 0 no-repeat padding-box;
-    background-size: cover;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-
-    font: normal normal bold 20px/23px Trebuchet MS;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    justify-items: center;
 }
 
 .bottom-bar {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
 
@@ -37,4 +25,60 @@ body {
 .co-workers {
     display: flex;
     flex-direction: row;
+}
+
+.task-list {
+    padding: 1em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.task {
+    padding: 0;
+    margin: 0 0 0.5em;
+    width: 80%;
+    align-self: center;
+}
+
+.task .function-button {
+    font-size: 1em;
+}
+
+h2 {
+    margin: 0 auto 1em auto;
+}
+
+h3 {
+    padding: 0.1em;
+    margin: 0;
+    font-size: 1em;
+}
+
+input {
+    width: 70%;
+    padding: 0;
+    border: none;
+
+    text-align: left;
+    font-size: 1em;
+    letter-spacing: 0.2px;
+}
+
+@media only screen and (max-device-width: 1200px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        height: 100vh;
+        width: 100vw;
+        overflow-y: auto;
+        padding-bottom: 2em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
 }

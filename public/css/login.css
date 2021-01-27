@@ -1,0 +1,44 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    background: transparent linear-gradient(180deg, #FCFCFC 0%, #2E4C7C 100%) 0 0 no-repeat padding-box;
+    background-size: cover;
+
+    justify-content: space-around;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    padding: 4vh 0 1vh 1em;
+}
+
+.submit-button button {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.sign-up-button button:active, button:focus {
+    box-shadow: none;
+}
+
+.sign-up-button button {
+    margin: 1vh 1%;
+    box-shadow: none;
+    border: none;
+    background: transparent no-repeat padding-box;
+}
+
+.motto p {
+    text-align: center;
+    font: normal normal normal 4em Vladimir Script;
+    letter-spacing: 0;
+    color: #D8A9B4;
+}
