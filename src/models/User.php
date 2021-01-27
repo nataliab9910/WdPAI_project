@@ -1,17 +1,14 @@
 <?php
 
 class User {
-
-    private $name;
-    private $surname;
-    private $email;
-    private $password;
-    private $photo;
-    private $id;
-    private $id_role;
-    private $id_user_details;
-
-    // TODO user photo
+    private string $name;
+    private string $surname;
+    private string $email;
+    private string $password;
+    private string $photo;
+    private ?int $id;
+    private ?int $id_role;
+    private ?int $id_user_details;
 
     public function __construct(string $name, string $surname, string $email, string $password = '',
                                 string $photo = '/public/img/user.png', int $id = null,

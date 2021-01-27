@@ -1,8 +1,8 @@
 <?php
 
-session_start();
-
 require 'Routing.php';
+
+session_start();
 
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
@@ -26,12 +26,10 @@ Routing::get('giveAdmin', 'UserController', Routing::ROLE_ADMIN);
 
 Routing::post('login', 'SecurityController');
 Routing::post('signup', 'SecurityController');
-Routing::post('changePassword', 'UserController');
+Routing::post('changePassword', 'SecurityController');
 Routing::post('changePhoto', 'UserController', Routing::ROLE_USER);
 Routing::post('search', 'UserController', Routing::ROLE_ADMIN);
 Routing::post('addTask', 'TaskController', Routing::ROLE_USER);
 Routing::post('google', 'DefaultController', Routing::ROLE_USER);
 
 Routing::run($path);
-
-//echo 'Hello there! 👋';

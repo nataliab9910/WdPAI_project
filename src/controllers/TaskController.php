@@ -6,8 +6,8 @@ require_once __DIR__ . '/../repository/TaskRepository.php';
 
 class TaskController extends AppController {
 
-    private $messages = [];
-    private $taskRepository;
+    private array $messages = [];
+    private TaskRepository $taskRepository;
 
     public function __construct() {
         parent::__construct();
@@ -28,7 +28,6 @@ class TaskController extends AppController {
                 'tasks' => $this->taskRepository->getTasks(),
                 'messages' => $this->messages]);
         }
-
         return $this->render('welcome', ['messages' => $this->messages]);
     }
 

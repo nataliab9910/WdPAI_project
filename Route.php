@@ -2,25 +2,25 @@
 
 
 class Route {
-    private $url;
-    private $view;
-    private $role;
+    private string $url;
+    private string $view;
+    private int $role;
 
-    public function __construct($url, $view, $role) {
+    public function __construct(string $url, string $view, int $role) {
         $this->url = $url;
         $this->view = $view;
         $this->role = $role;
     }
 
-    public function getUrl() {
+    public function getUrl():string {
         return $this->url;
     }
 
-    public function getView() {
+    public function getView():string {
         return $this->view;
     }
 
-    public function getRole() {
+    public function getRole(): int {
         return $this->role;
     }
 

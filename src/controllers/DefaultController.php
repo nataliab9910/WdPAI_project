@@ -34,5 +34,4 @@ class DefaultController extends AppController {
         $keywords = $_POST['keywords'];
         header("Location: ".$search_url.$keywords);
     }
-
 }

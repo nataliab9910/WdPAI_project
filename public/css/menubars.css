@@ -135,7 +135,7 @@ img {
 @media only screen and (max-device-width: 1200px) {
 
     .title {
-        font-size: 30px;
+        font-size: 50px;
     }
 
     .menubar {
@@ -144,12 +144,16 @@ img {
 
     .menubar.active {
         display: block;
-        width: 30%;
+        width: 50%;
     }
 
     .menubar ul li a .title {
-        font-size: 30px;
+        font-size: 50px;
         white-space: nowrap;
+    }
+
+    .menubar ul li a .menu-icon {
+        font-size: 50px;
     }
 
     .options-list ul {

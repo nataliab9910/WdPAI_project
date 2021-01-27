@@ -1,7 +1,6 @@
 <?php
 
 class AppController {
-
     private $request;
 
     public function __construct() {
@@ -30,5 +29,4 @@ class AppController {
 
         print $output;
     }
-
 }

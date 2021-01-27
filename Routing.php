@@ -13,20 +13,20 @@ class Routing {
     public const ROLE_USER = 1;
     public const ROLE_ANONYM = 0;
 
-    public static $routes;
+    public static array $routes;
 
-    public static function get($url, $view, $role = self::ROLE_ANONYM) {
+    public static function get(string $url, string $view, int $role = self::ROLE_ANONYM): void {
         self::$routes[$url] = new Route($url, $view, $role);
     }
 
-    public static function post($url, $view, $role = self::ROLE_ANONYM) {
+    public static function post(string $url, string $view, int $role = self::ROLE_ANONYM): void {
         self::get($url, $view, $role);
     }
 
-    public static function run($url) {
+    public static function run(string $url): void {
         $urlParts = explode("/", $url);
         $action = $urlParts[0];
-        $id = $urlParts[1] ?? ''; // TODO walidacja czy to int i czy na pewno możemy przekazać do kontrolera
+        $id = $urlParts[1] ?? '';
         $route = self::getRoute($action);
         $user = new User("", "", "");
 
@@ -57,7 +57,7 @@ class Routing {
         }
     }
 
-    public static function getRoute($url): ?Route {
+    public static function getRoute(string $url): ?Route {
         $route = array_filter(self::$routes, function (Route $a) use ($url) {
             if ($a->getUrl() === $url) {
                 return true;
@@ -71,5 +71,4 @@ class Routing {
 
         return null;
     }
-
 }

@@ -18,6 +18,14 @@ function validateEmail() {
 
 function validatePassword() {
     setTimeout(function () {
+            const condition = isPasswordTooShort(
+                passwordInput.value,
+            );
+            markValidation(passwordInput, condition);
+        },
+        1000
+    );
+    setTimeout(function () {
             const condition = arePasswordsSame(
                 passwordInput.value,
                 confirmedPasswordInput.value
@@ -30,6 +38,10 @@ function validatePassword() {
 
 function arePasswordsSame(password, confirmedPassword) {
     return password === confirmedPassword;
+}
+
+function isPasswordTooShort(password) {
+    return password.length > 5;
 }
 
 function markValidation(element, condition) {

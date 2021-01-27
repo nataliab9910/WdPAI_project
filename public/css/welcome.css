@@ -265,7 +265,7 @@ form.search-bar button:active {
 
 @media only screen and (max-width: 1200px) {
     .container {
-        height: min-content;
+        height: 100vh;
         display: flex;
         justify-content: space-between;
         overflow-y: scroll;

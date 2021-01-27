@@ -11,8 +11,8 @@ class UserController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
     const DEFAULT_PHOTO = '/public/img/user.png';
 
-    private $messages = [];
-    private $userRepository;
+    private array $messages = [];
+    private UserRepository $userRepository;
 
     public function __construct() {
         parent::__construct();
@@ -43,36 +43,6 @@ class UserController extends AppController {
         }
     }
 
-    public function changePassword() {
-        if (!$this->isPost()) {
-            return $this->render('user-account');
-        }
-
-        $currentPassword = $_POST['currentPassword'];
-        $newPassword = $_POST['password'];
-        $confirmedPassword = $_POST['confirmedPassword'];
-
-        if ($newPassword !== $confirmedPassword) {
-            return $this->render('user-account', ['passmessages' => ['Passwords does not match.']]);
-        }
-
-        if (!isset($_SESSION['user_email'])) {
-            return $this->render('login', ['passmessages' => ['Something went wrong.']]);
-        }
-
-        $user = $this->userRepository->getUserByEmail($_SESSION['user_email']);
-        if (!password_verify($currentPassword, $user->getPassword())) {
-            return $this->render('user-account', ['passmessages' => ['Wrong password!']]);
-        }
-
-        if ($currentPassword === $newPassword) {
-            return $this->render('user-account', ['passmessages' => ["New password can't be the same as old."]]);
-        }
-
-        $this->userRepository->changePassword($user, password_hash($newPassword, PASSWORD_BCRYPT));
-        return $this->render('user-account', ['passmessages' => ["Password changed!"]]);
-    }
-
     public function changePhoto() {
         if (!($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file']))) {
             return $this->render('user-account', ['messages' => ['Problem with uploaded photo.']]);
@@ -91,22 +61,22 @@ class UserController extends AppController {
         return $this->render('user-account');
     }
 
-    public function deleteUser($id) {
+    public function deleteUser(int $id) {
         $this->userRepository->deleteUser($id);
         http_response_code(200);
     }
 
-    public function deletePhoto($id) {
+    public function deletePhoto(int $id) {
         $this->userRepository->deletePhoto($id);
         http_response_code(200);
     }
 
-    public function giveUser($id) {
+    public function giveUser(int $id) {
         $this->userRepository->giveRole($id, 'user');
         http_response_code(200);
     }
 
-    public function giveAdmin($id) {
+    public function giveAdmin(int $id) {
         $this->userRepository->giveRole($id, 'admin');
         http_response_code(200);
     }
@@ -124,5 +94,4 @@ class UserController extends AppController {
 
         return true;
     }
-
 }

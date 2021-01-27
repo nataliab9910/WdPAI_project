@@ -5,30 +5,7 @@ require_once __DIR__.'/../models/Task.php';
 
 class TaskRepository extends Repository {
 
-    // TODO
-    //public function getTask(int $id): ?Task {
-    //
-    //    $stmt = $this->database->connect()->prepare('
-    //        SELECT * FROM tasks WHERE id = :id
-    //    ');
-    //
-    //    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    //    $stmt->execute();
-    //
-    //   $task = $stmt->fetch(PDO::FETCH_ASSOC);
-    //
-    //   if ($task == false) {
-    //       // TODO change null to exception
-    //       return null;
-    //   }
-    //
-    //   return new Task(
-    //       $task['title'], $task['completed']
-    //   );
-    //}
-
     public function getTasks(): array {
-
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
@@ -49,7 +26,6 @@ class TaskRepository extends Repository {
     }
 
     public function addTask(Task $task): void {
-
         $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
            INSERT INTO tasks (id_user, title, created_at) VALUES (?, ?, ?)
@@ -64,7 +40,7 @@ class TaskRepository extends Repository {
         ]);
     }
 
-    public function check(int $id) {
+    public function check(int $id): void {
         $stmt = $this->database->connect()->prepare('
             UPDATE tasks SET completed = CASE WHEN completed = true THEN false ELSE true END WHERE id = :id
         ');
@@ -72,7 +48,7 @@ class TaskRepository extends Repository {
         $stmt->execute();
     }
 
-    public function delete(int $id) {
+    public function delete(int $id): void {
         $stmt = $this->database->connect()->prepare('
             DELETE FROM tasks WHERE id = :id
         ');

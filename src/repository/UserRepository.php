@@ -5,10 +5,9 @@ require_once __DIR__ . '/../models/User.php';
 
 class UserRepository extends Repository {
 
-    public function addUser(User $user) {
+    public function addUser(User $user): bool {
         // check if user with this email already exists in database
         if ($this->getUserByEmail($user->getEmail())) {
-            // TODO exception
             return false;
         }
 
@@ -35,20 +34,20 @@ class UserRepository extends Repository {
             $this->getUserDetailsId($user),
             $date->format('Y-m-d')
         ]);
-
         return true;
     }
 
-    public function changePassword(User $user, string $password) {
+    public function changePassword(User $user, string $password): void {
         $stmt = $this->database->connect()->prepare('
             UPDATE users SET password = :password WHERE email = :email
         ');
+        $email = $user->getEmail();
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $_SESSION['user_email'], PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
     }
 
-    public function changePhoto(User $user, string $photo) {
+    public function changePhoto(User $user, string $photo): void {
         $stmt = $this->database->connect()->prepare('
             UPDATE user_details SET photo = :photo WHERE id = :id
         ');
@@ -58,13 +57,14 @@ class UserRepository extends Repository {
         $stmt->execute();
     }
 
-    public function deleteUser($id) {
+    public function deleteUser(int $id): void {
         $user = $this->getUserById($id);
         $stmt = $this->database->connect()->prepare('
             DELETE FROM users WHERE id = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
+
         $stmt = $this->database->connect()->prepare('
             DELETE FROM user_details WHERE id = :user_details_id
         ');
@@ -73,12 +73,12 @@ class UserRepository extends Repository {
         $stmt->execute();
     }
 
-    public function deletePhoto($id) {
+    public function deletePhoto(int $id): void {
         $user = $this->getUserById($id);
         $this->changePhoto($user, UserController::DEFAULT_PHOTO);
     }
 
-    public function giveRole($id, $role) {
+    public function giveRole(int $id, string $role): void {
         $stmt = $this->database->connect()->prepare('
             SELECT id FROM roles WHERE role = :role
         ');
@@ -104,8 +104,7 @@ class UserRepository extends Repository {
         $stmt->execute();
     }
 
-    public function addToLogs() {
-
+    public function addToLogs(): void {
         if (empty($_SESSION['user_email'])) {
             return;
         }
@@ -136,19 +135,16 @@ class UserRepository extends Repository {
     }
 
     public function getUserByEmail(string $email): ?User {
-
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM view_all_user_details
             WHERE email = :email
         ');
-
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user == false) {
-            // TODO change null to exception
             return null;
         }
 
@@ -218,7 +214,7 @@ class UserRepository extends Repository {
         return $data['id'];
     }
 
-    private function getUserById($id) {
+    private function getUserById(int $id): User {
         $stmt = $this->database->connect()->prepare('
             SELECT email FROM users WHERE id = :id
         ');

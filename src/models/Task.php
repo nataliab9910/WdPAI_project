@@ -2,30 +2,29 @@
 
 
 class Task {
+    private string $title;
+    private bool $completed;
+    private ?int $id;
 
-    private $title;
-    private $completed;
-    private $id;
-
-    public function __construct($title, $completed = false, $id = null) {
+    public function __construct(string $title, bool $completed = false, ?int $id = null) {
         $this->title = $title;
         $this->completed = $completed;
         $this->id = $id;
     }
 
-    public function getTitle() {
+    public function getTitle(): string {
         return $this->title;
     }
 
-    public function setTitle($title): void {
+    public function setTitle(string $title): void {
         $this->title = $title;
     }
 
-    public function getCompleted() {
+    public function getCompleted(): bool {
         return $this->completed;
     }
 
-    public function setCompleted($completed): void {
+    public function setCompleted(bool $completed): void {
         $this->completed = $completed;
     }
 
@@ -36,5 +35,4 @@ class Task {
     public function setId(int $id): void {
         $this->id = $id;
     }
-
 }
